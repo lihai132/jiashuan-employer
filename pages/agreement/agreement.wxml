@@ -1,0 +1,5 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class="wx-container">
+    <template is="wxParse" data="{{wxParseData:service_agreement.nodes}}" />
+</view>

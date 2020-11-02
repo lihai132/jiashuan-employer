@@ -1,0 +1,35 @@
+<view class="app-body">
+    <view class="app-container">
+        <view class="bill-list">
+            <view class="bill-list-item bill-bg">
+                <view class="bill-info">
+                    <view class="items flexbox">
+                        <view class="label">账单周期</view>
+                        <view class="input flex1">2020年09月23日-2020年10月23日</view>
+                    </view>
+                    <view class="items flexbox">
+                        <view class="label">包月服务</view>
+                        <view class="input flex1">保洁+整理13:30～15:30(周一、三、五)</view>
+                    </view>
+                    <view class="items flexbox">
+                        <view class="label">联系人</view>
+                        <view class="input flex1">王先生13157489464</view>
+                    </view>
+                    <view class="items flexbox">
+                        <view class="label">服务地址</view>
+                        <view class="input flex1">广州市天河区福江花园B幢1502</view>
+                    </view>
+                </view>
+                <view class="bill-switch">
+                    <view class="flexbox justify">
+                        <view class="switch-txt">微信每月代扣</view>
+                        <view class="switch-val">
+                            <!-- <switch checked="{{switchChecked}}" bindchange="switchChange" data-index="0" /> -->
+                            <van-switch checked="{{ switchChecked }}" bind:change="switchChange" data-index="0" active-color="#ff8666" size="22px" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

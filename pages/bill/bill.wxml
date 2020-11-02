@@ -1,0 +1,127 @@
+<view class="app-body">
+    <view class="app-container">
+        <view class="bill-block">
+            <van-tabs sticky swipeable color="#ff8666" bind:click="tabClick" active="{{ tab }}">
+                <van-tab title="未缴账单">
+                    <view class="bill-wraper">
+                        <view class="bill-list" wx:if="{{billList.length > 0}}">
+                            <view class="bill-list-item">
+                                <view class="bill-list-item-head">2020年10月账单</view>
+                                <image class="bill-line" src="../../images/mine/line-bg.png" mode="widthFix"></image>
+                                <view class="bill-list-item-box">
+                                    <view class="bill-price">
+                                        <view class="text">待支付(元)</view>
+                                        <view class="price">3000</view>
+                                        <view class="text">账单已出，请于<text style="color: #ff8666;">10月23日</text>前支付</view>
+                                        <view class="text">否则家政师将不能继续为您带来服务</view>
+                                        <view class="price-block">
+                                            <view class="price-info flexbox justify middle">
+                                                <view>
+                                                    <text class="txt1">开启每月代扣</text>
+                                                    <text class="txt2">(可随时在扣款管理取消)</text>
+                                                </view>
+                                                <block wx:if="{{swatchVal == 1}}">
+                                                    <icon type="success" size="24" color="#ff8666" bindtap="switchHandle" data-index="1" data-val="0"></icon>
+                                                </block>
+                                                <block wx:else>
+                                                    <icon type="success" size="24" color="#C9C9C9" bindtap="switchHandle" data-index="1" data-val="1"></icon>
+                                                </block>
+                                            </view>
+                                        </view>
+                                        <view class="button-price" bindtap="payHandle">立即缴费</view>
+                                    </view>
+                                    <view class="bill-subtotal">
+                                        <text class="bill-subtotal-label">账单金额</text>
+                                        <text class="bill-subtotal-input">3000</text>
+                                    </view>
+                                    <view class="bill-info">
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">来单时间</view>
+                                            <view class="bill-info-input">2020年10月16日</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">账单周期</view>
+                                            <view class="bill-info-input">2020年09月23日-2020年10月23日</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">包月服务</view>
+                                            <view class="bill-info-input">保洁+整理13:30～15:30(周一、三、五)</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">联系人</view>
+                                            <view class="bill-info-input">王先生13157489464</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">服务地址</view>
+                                            <view class="bill-info-input">广州市天河区福江花园B幢1502广州市天河区福江花园B幢1502</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="bill-nodata" wx:else>
+                            <view class="nodata-image flexbox center">
+                                <image src="../../images/home/no-detail.png" mode="widthFix" />
+                            </view>
+                            <view class="nodata-text flexbox center">暂无账单~</view>
+                        </view>
+                    </view>
+                </van-tab>
+                <van-tab title="已缴账单">
+                    <view class="bill-wraper">
+                        <view class="bill-list" wx:if="{{paidList.length > 0}}" style="padding-bottom: 142rpx;">
+                            <view class="bill-list-item">
+                                <view class="bill-list-item-head">2020年10月账单</view>
+                                <image class="bill-line" src="../../images/mine/line-bg.png" mode="widthFix"></image>
+                                <view class="bill-list-item-box">
+                                    <view class="bill-paid">
+                                        <view class="flexbox center">
+                                            <image src="../../images/mine/no-bill.png" mode="widthFix"></image>
+                                        </view>
+                                        <view class="bill-paid-title flexbox center">账单已缴清</view>
+                                        <view class="bill-paid-text flexbox center">棒棒哒,继续保持哦~</view>
+                                    </view>
+                                    <view class="bill-subtotal">
+                                        <text class="bill-subtotal-label">账单金额</text>
+                                        <text class="bill-subtotal-input">3000</text>
+                                    </view>
+                                    <view class="bill-info">
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">来单时间</view>
+                                            <view class="bill-info-input">2020年10月16日</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">账单周期</view>
+                                            <view class="bill-info-input">2020年09月23日-2020年10月23日</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">包月服务</view>
+                                            <view class="bill-info-input">保洁+整理13:30～15:30(周一、三、五)</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">联系人</view>
+                                            <view class="bill-info-input">王先生13157489464</view>
+                                        </view>
+                                        <view class="bill-info-item flexbox">
+                                            <view class="bill-info-label">服务地址</view>
+                                            <view class="bill-info-input">广州市天河区福江花园B幢1502广州市天河区福江花园B幢1502</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="bill-nodata" wx:else>
+                            <view class="nodata-image flexbox center">
+                                <image src="../../images/home/no-detail.png" mode="widthFix" />
+                            </view>
+                            <view class="nodata-text flexbox center">暂无账单~</view>
+                        </view>
+                        <view class="bill-button flexbox center middle">
+                            <text bindtap="toPage">代扣管理</text>
+                        </view>
+                    </view>
+                </van-tab>
+            </van-tabs>
+        </view>
+    </view>
+</view>

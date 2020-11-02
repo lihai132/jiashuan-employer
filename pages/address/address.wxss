@@ -1,0 +1,58 @@
+.location-city {
+  padding: 0 30rpx;
+  height: 120rpx;
+}
+.location-city .city {
+  color: #1A1A1A;
+  font-size: 32rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  margin-right: 24rpx;
+}
+.location-city .location {
+  color: #999;
+  font-size: 26rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+}
+.app-content {
+  width: 750rpx;
+}
+.hot-city {
+  height: 306rpx;
+  background-color: #f6f6f6;
+  padding: 0 30rpx;
+}
+.hot-city-subTitle {
+  color: #999;
+  font-size: 26rpx;
+  padding-top: 30rpx;
+}
+.hot-city-listBox {
+  margin-top: 40rpx;
+}
+.hot-city-listBox .items {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #1A1A1A;
+  font-size: 32rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+.no-data {
+  margin-top: 118rpx;
+}
+.no-data-pic {
+  width: 360rpx;
+  height: 208rpx;
+}
+.no-data-text view {
+  margin: 0 auto;
+  margin-top: 44rpx;
+  font-size: 28rpx;
+  color: #666;
+  width: 224rpx;
+  text-align: center;
+}

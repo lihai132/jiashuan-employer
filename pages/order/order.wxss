@@ -1,0 +1,128 @@
+page {
+    background-color: #f6f6f6;
+}
+button {
+    width: 100% !important;
+}
+.no-data {
+    margin-top: 252rpx;
+}
+.no-pic image {
+    width: 360rpx;
+    height: 208rpx;
+}
+.no-text {
+    margin-top: 44rpx;
+    font-size: 29rpx;
+    color: #666;
+}
+.no-data .btn {
+    margin-top: 24rpx;
+    font-size: 24rpx;
+    width: 25% !important;
+    border-radius: 32rpx;
+    color: #1D1D1D;
+}
+.no-data .btn.btn-primary {
+    color: #fff;
+    background: linear-gradient(90deg, #FFBB9F 0%, #FF8666 100%);
+}
+.isEnd {
+    font-size: 26rpx;
+    color: #999;
+    text-align: center;
+    padding: 30rpx 0;
+}
+
+.order-item {
+    background-color: #fff;
+    margin: 30rpx 30rpx 0 30rpx;
+    border-radius: 16rpx;
+}
+.order-item:last-child {
+    margin-bottom: 30rpx;
+}
+.item-card {
+    padding: 0 30rpx;
+}
+.item-top {
+    line-height: 98rpx;
+    border-bottom: 2rpx solid #f6f6f6;
+    font-size: 29rpx;
+    color: #1d1d1d;
+}
+.item-top .order-status {
+    color: #9b9b9b;
+}
+.item-content {
+    padding-top: 20rpx;
+    padding-bottom: 36rpx;
+    border-bottom: 2rpx solid #f6f6f6;
+}
+.item-content .order-pic image {
+    width: 160rpx;
+    height: 160rpx;
+    min-width: 160rpx;
+    margin-right: 20rpx;
+    background-color: #f6f6f6;
+}
+.item-content .order-content .order-title {
+    width: 454rpx;
+    color: #333;
+    font-size: 32rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.item-content .order-content .order-count {
+    margin-left: 20rpx;
+    font-size: 29rpx;
+    color: #FF8666;
+}
+.item-content .order-content .order-time {
+    font-size: 29rpx;
+    color: #999;
+    margin-top: 4rpx;
+    margin-bottom: 18rpx;
+}
+.item-content .order-content .order-pay {
+    color: #1D1D1D;
+    font-size: 32rpx;
+}
+.item-content .order-content .subtotal {
+    color: #FF2556;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.item-content .order-content .subtotal text {
+    font-size: 24rpx;
+}
+.item-content .order-tips {
+    width: 100%;
+    margin-top: 36rpx;
+    border-radius: 8rpx;
+    background-color: #F5F6FA;
+    padding: 16rpx 20rpx;
+    font-size: 24rpx;
+    color: #666;
+}
+.item-bottom .btn {
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+    margin-bottom: 40rpx;
+    font-size: 29rpx;
+    padding: 13rpx 40rpx;
+    border-radius: 32rpx;
+    border: 2rpx solid #E5E5E5;
+    color: #1D1D1D;
+}
+.item-bottom .btn.btn-primary {
+    color: #FF8666;
+    border: 2rpx solid #FF8666;
+}
+.item-bottom .btn.btn-not-allow {
+    color: #fff;
+    background-color: #FF8666;
+    border: 2rpx solid #FF8666;
+    opacity: 0.5;
+}

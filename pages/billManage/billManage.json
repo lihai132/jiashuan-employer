@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "代扣管理",
+  "usingComponents": {
+    "van-switch": "@vant/weapp/switch/index"
+  }
+}

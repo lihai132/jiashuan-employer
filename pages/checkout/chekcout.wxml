@@ -1,0 +1,80 @@
+<view class="app-body">
+    <view class="checkout-block">
+        <view class="product-wrapper bg-while mt20">
+            <view class="product-title">商品信息</view>
+            <view class="product-info flexbox">
+                <view class="product-left">
+                    <image src="{{detailData.logo}}" mode="scaleToFill"></image>
+                </view>
+                <view class="product-right flex1">
+                    <view class="title">{{detailData.title}}</view>
+                    <view class="attribute">
+                        <text>时间段：{{detailData.part_time}}</text>
+                        <text wx:if="{{detailData.cycle_name != ''}}">；服务周期：{{detailData.cycle_name}}</text>
+                    </view>
+                    <view class="flexbox justify">
+                        <view class="price"><text class="sign">¥</text>{{detailData.price}}</view>
+                        <view class="quantity">x1</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <block wx:if="{{detailData.goods_type == 1}}">
+            <view class="price-wrapper bg-while mt20">
+                <view class="product-title">付款计划</view>
+                <view class="price-info">
+                    <view class="items flexbox justify top">
+                        <view class="label">
+                            <view class="title">每月应付</view>
+                            <!-- <view class="subtitle">每月13号系统推送账单</view> -->
+                        </view>
+                        <view class="input flexbox middle">
+                            <text class="timer">共12期</text>
+                            <text class="price">¥{{detailData.price}}</text>
+                        </view>
+                    </view>
+                    <view class="items flexbox justify top">
+                        <view class="label">
+                            <view class="title">首期押金</view>
+                            <view class="subtitle">预付押金将在最后一个月作为服务费抵扣</view>
+                        </view>
+                        <view class="input">
+                            <text class="price">¥{{detailData.price}}</text>
+                        </view>
+                    </view>
+                    <view class="amount flexbox justify middle">
+                        <view class="label">首期应付</view>
+                        <view class="input">¥{{detailData.total}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="pay-wrapper bg-while">
+                <view class="product-title flexbox justify middle">
+                    <view>
+                        开启每月代付
+                        <text class="subtitle">(可随时在扣款管理取消)</text>
+                    </view>
+                    <view style="margin-top: 24rpx;">
+                        <block wx:if="{{switchVal == 1}}">
+                            <icon color="#ff8666" type="success" size="22" bindtap="switchHandle" data-val="0"></icon>
+                        </block>
+                        <block wx:else>
+                            <icon color="#C9C9C9" type="success" size="22" bindtap="switchHandle" data-val="1"></icon>
+                        </block>
+                    </view>
+                </view>
+                <view class="subtitle">扣款后在我的-包月账单，查看详情</view>
+            </view>
+        </block>
+    </view>
+    <view class="checkout-btn">
+        <view class="btn-container flexbox justify middle">
+            <view class="flexbox left">
+                <text class="total-text">合计：</text>
+                <text class="total-price">¥{{detailData.total}}</text>
+            </view>
+            <view class="button-submit" bindtap="payHandle">提交订单</view>
+        </view>
+    </view>
+    <van-notify id="van-notify" />
+</view>

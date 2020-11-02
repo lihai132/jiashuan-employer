@@ -1,0 +1,49 @@
+<view class="app-body">
+    <view class="app-container">
+        <view class="personal-wrapper mt60">
+            <view class="personal flexbox left bottom">
+                <view class="personal-left">
+                    <view class="img-box">
+                        <image src="{{personal.headimgurl}}" mode="widthFix"></image>
+                    </view>
+                </view>
+                <view class="personal-right">
+                    <view class="name">{{personal.name}}</view>
+                    <view class="personal-form">
+                        <view class="personal-form-item flexbox left">
+                            <view class="label">年龄</view>
+                            <view class="input">{{personal.age}}</view>
+                        </view>
+                        <view class="personal-form-item flexbox left">
+                            <view class="label">民族</view>
+                            <view class="input">{{personal.nation}}</view>
+                        </view>
+                        <view class="personal-form-item flexbox left">
+                            <view class="label">籍贯</view>
+                            <view class="input">{{personal.native_place}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="img-wrapper mt60">
+            <view class="img-form">
+                <view class="img-form-item">
+                    <view class="title">家政师身份证</view>
+                    <view class="pic">
+                        <image src="{{personal.idcard_image_front}}" mode="widthFix"></image>
+                    </view>
+                </view>
+                <view class="img-form-item mt60">
+                    <view class="title">家政师身份证</view>
+                    <view class="pic">
+                        <image src="{{personal.health_image_front}}" mode="widthFix"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn-wrapper">
+            <button class="btn btn-primary" bindtap="toPage">确认信息</button>
+        </view>
+    </view>
+</view>

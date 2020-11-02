@@ -1,0 +1,122 @@
+<view class="mine">
+  <!-- 头部信息 -->
+  <view class="header">
+    <view class="default-bg header-container">
+      <image class="header-bg" src="../../images/mine/bg.png"></image>
+      <view class="wx-container">
+        <view class="user-contant">
+          <view class="wx-scanCode">
+            <view class="flexbox right">
+              <image src="../../images/mine/icon-scan.png" class="wx-img" bindtap="getScanCode"></image>
+            </view>
+          </view>
+          <!-- 登录后的样式 -->
+          <view class="flexbox middle justify" wx:if="{{isLogin}}">
+            <view class="message-left flexbox left">
+              <view class="wx-avatar">
+                <image src="../../images/mine/avatar-default.png"></image>
+              </view>
+              <view class="wx-msg flexbox middle">
+                <view class="wx-phone">{{phone}}</view>
+              </view>
+            </view>
+            <view class="message-right">
+              <view class="sign-out" bindtap="signout">退出登录</view>
+            </view>
+          </view>
+          <!-- 未登录的样式 -->
+          <view class="flexbox middle justify" wx:else>
+            <view class="message-left flexbox middle">
+              <view class="wx-avatar">
+                <image src="../../images/mine/avatar-default.png"></image>
+              </view>
+              <button class="wx-login" bindtap="toPage" data-type="authorize">立即登录</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 菜单按钮 -->
+  <view class="menu-content">
+    <view class="menu-box">
+        <!-- <view class="menu-item">
+            <view class="menu-btn flexbox justify" bindtap="toPage" data-type="bill">
+                <view class="flexbox justify">
+                    <view class="menu-icon flexbox middle">
+                        <image src="../../images/mine/icon-bill.png"></image>
+                    </view>
+                    <view class="menu-name">包月账单</view>
+                </view>
+                <view class="menu-arror flexbox middle">
+                    <image src="../../images/mine/icon-arror-right.png"></image>
+                </view>
+            </view>
+        </view> -->
+        <view class="menu-item">
+            <view class="menu-btn flexbox justify" bindtap="callMobile">
+                <view class="flexbox">
+                    <view class="menu-icon flexbox middle">
+                        <image src="../../images/mine/icon-contact.png"></image>
+                    </view>
+                    <view class="menu-name">联系站长</view>
+                </view>
+                <view class="menu-arror flexbox middle">
+                    <image src="../../images/mine/icon-arror-right.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-btn flexbox justify" bindtap="toPage" data-type="feedback">
+                <view class="flexbox justify">
+                    <view class="menu-icon flexbox middle">
+                        <image src="../../images/mine/icon-suggest.png"></image>
+                    </view>
+                    <view class="menu-name">意见反馈</view>
+                </view>
+                <view class="menu-arror flexbox middle">
+                    <image src="../../images/mine/icon-arror-right.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-btn flexbox justify" bindtap="toPage" data-type="agreement">
+                <view class="flexbox justify">
+                    <view class="menu-icon flexbox middle">
+                        <image src="../../images/mine/icon-service.png"></image>
+                    </view>
+                    <view class="menu-name">服务协议</view>
+                </view>
+                <view class="menu-arror flexbox middle">
+                    <image src="../../images/mine/icon-arror-right.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="menu-item">
+            <view class="menu-btn flexbox justify" bindtap="toPage" data-type="join">
+                <view class="flexbox justify">
+                    <view class="menu-icon flexbox middle">
+                        <image src="../../images/mine/icon-join.png"></image>
+                    </view>
+                    <view class="menu-name">加入我们</view>
+                </view>
+                <view class="menu-arror flexbox middle">
+                    <image src="../../images/mine/icon-arror-right.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+  <van-popup show="{{ phoneListshow }}" closeable round position="bottom" custom-style="height: 60%" bind:close="onMobileClose">
+    <view class="mobile-container">
+      <view class="mobile-list-title">请选择需要联系的站长</view>
+      <view class="mobile-list">
+        <view class="mobile-list-item flexbox center" wx:for="{{phoneList}}" wx:key="index" bindtap="callMobile" data-phone="{{item.phone}}">
+          <text>{{item.name}}</text>
+          <view>{{item.phone}}</view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <van-toast id="van-toast" />
+</view>

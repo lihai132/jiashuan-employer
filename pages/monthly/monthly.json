@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "转包月服务",
+  "usingComponents": {
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index"
+  }
+}

@@ -1,0 +1,69 @@
+<view class="app-body">
+  <block wx:if="{{isNetword}}">
+    <view class="app-header">
+      <view class="banner">
+        <swiper autoplay="true" style="height: {{imgH}}px">
+          <block wx:for="{{indexObject.banner}}" wx:key="index">
+            <swiper-item>
+              <image src="{{item.images}}" mode="widthFix" bindload="onImageLoad"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="wx-address-outter">
+        <view class="wx-address-inner" bindtap="toPage" data-type="address">
+          <view class="address flexbox middle center">
+            {{city}}<van-icon class="arrow-down" name="arrow-down" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="app-content">
+      <view class="home-block">
+        <view class="list-box">
+          <view class="list-box-item" wx:for="{{partList}}" wx:key="index">
+            <view class="wx-title flexbox left middle">
+              <image src="../../images/home/home-icon2.png" mode="widthFix"></image>
+              <view class="title">{{item.title}}</view>
+            </view>
+            <view class="items-wrapper flexbox wrap">
+              <view class="items" wx:for="{{item.list}}" wx:key="index" wx:for-item="items" bindtap="toPage" data-type="detail" data-id="{{items.goods_id}}">
+                <image class="items-img" src="{{items.images}}" mode="widthFix"></image>
+                <view class="absolute-block">
+                  <view class="subtitle1">{{items.subtitle1}}</view>
+                  <view class="subtitle2 {{items.subtitle4 === '' ? '' : 'mt264'}}">{{items.subtitle2}}</view>
+                  <view class="subtitle3">{{items.subtitle3}}</view>
+                  <view class="subtitle3">{{items.subtitle4}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="fixed-wrap" wx:if="{{phoneShow}}">
+        <image src="../../images/home/mobile.png" bindtap="callPhone"></image>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="no-data flexbox center">
+      <view class="no-data-wrap">
+        <image class="no-data-pic" src="../../images/home/no-netword.png"></image>
+        <view class="no-data-text">暂无网络，刷新试一下吧～</view>
+        <view class="btn btn-primary" bindtap="refresh">刷新网络</view>
+      </view>
+    </view>
+  </block>
+  <van-popup show="{{ phoneListshow }}" closeable round position="bottom" custom-style="height: 60%" bind:close="onMobileClose">
+    <view class="mobile-container">
+      <view class="mobile-list-title">请选择需要联系的家政师</view>
+      <view class="mobile-list">
+        <view class="mobile-list-item flexbox center" wx:for="{{phoneList}}" wx:key="index" bindtap="callMobile" data-phone="{{item.phone}}">
+          <text>{{item.name}}</text>
+          <view>{{item.phone}}</view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <van-notify id="van-notify" />
+</view>

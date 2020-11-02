@@ -1,0 +1,219 @@
+/* 头部信息 */
+.app-header {
+  width: 100%;
+  border-bottom: 20rpx solid #f6f6f6;
+}
+.app-header-banner {
+  width: 690rpx;
+  margin: 0 30rpx;
+  margin-top: 30rpx;
+}
+.app-header-banner image {
+  width: 690rpx;
+}
+.app-header-content {
+  padding: 0 30rpx;
+}
+.app-header-content .price {
+  font-size: 57rpx;
+  color: #FF2556;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-weight: bold;
+  margin-top: 30rpx;
+}
+.app-header-content .price .t2 {
+  font-size: 32rpx;
+  margin-left: 8rpx;
+}
+.app-header-content .subtitle {
+  font-size: 36rpx;
+  color: #202020;
+  padding-bottom: 40rpx;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 99;
+}
+.notfixed {
+  margin-top: 102rpx;
+}
+
+
+
+
+
+/* but模块的样式 */
+.purchase{
+  width: 100%;
+  padding: 16rpx 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+}
+/* but模块的样式 */
+/* 弹出层模块的样式 */
+.details-popup-top {
+  display: flex;
+
+}
+
+.top-left-src {
+  width: 180rpx;
+  height: 184rpx;
+  margin-top: 60rpx;
+  margin-left: 40rpx;
+  margin-right: 24rpx;
+}
+
+.details-popup-top .top-right-price {
+  margin-top: 128rpx;
+  text-align: left;
+  position: relative;
+}
+
+.top-right-price .num {
+  font-size: 40rpx;
+  line-height: 48rpx;
+  color: #FF2556;
+}
+
+.yuan {
+  font-size: 24rpx;
+  line-height: 28rpx;
+  position: absolute;
+  top: -10rpx;
+  color: #FF2556;
+}
+
+.top-right-title {
+  margin-top: 24rpx;
+  font-style: 28rpx;
+  line-height: 20rpx;
+  color: #999999;
+}
+
+.details-popup-nav {
+  margin-top: 80rpx;
+  padding-left: 40rpx;
+}
+
+.details-popup-nav-title {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin-bottom: 30rpx;
+  color: #1D1D1D;
+  text-align: left;
+  font-weight: 400;
+}
+
+.details-popup-nav-timeList {
+  display: flex;
+}
+
+.details-popup-nav-time {
+  width: 320rpx;
+  height: 56rpx;
+  font-style: 28rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background: #F6F6F6;
+  border-radius: 56rpx;
+  color: #666666;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #666666;
+  border-color: rgba(128,128,128, 0)
+ 
+}
+.details-popup-nav-time-active {
+  font-style: 28rpx;
+  line-height: 56rpx;
+  text-align: center;
+  width: 320rpx;
+  background: rgba(255, 134, 102, 0.1);
+  border-radius: 56rpx;
+  border: 2rpx solid #FF8666;
+  color: #FF8666;
+  margin-right: 30rpx;
+
+}
+.details-popup-foot{
+  width: 100%;
+  padding: 16rpx 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+.discount {
+  font-size: 32rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border-radius: 24rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background-color: #FF2556;
+  color: #fff;
+  margin-left: 12rpx;
+}
+.discount text {
+  font-size: 20rpx;
+  line-height: 20rpx;
+  margin-right: 8rpx;
+}
+/* 弹出层模块的样式 */
+
+/* tab 样式 */
+page {
+  height: 100%;
+}
+.tab-list {
+  padding: 0 60rpx;
+}
+.tab-list .tab-item {
+  padding: 20rpx 0;
+  font-size: 32rpx;
+  color: #999;
+}
+.tab-list .tab-item.on {
+  color: #333;
+}
+.tab-list .tab-item .line {
+  display: none;
+  width: 48rpx;
+  height: 4rpx;
+  background-color: #FF8666;
+  border-radius: 2rpx;
+  margin: 0 auto;
+  margin-top: 16rpx;
+}
+.tab-list .tab-item.on .line {
+  display: block;
+}
+.tab-content {
+  padding-bottom: 112rpx;
+}
+.tab-content scroll-view {
+  height: 100%;
+}
+.tab-content .tabType image {
+  width: 100%;
+}
+
+.no-data {
+  margin-top: 252rpx;
+}
+.no-data-pic {
+  width: 360rpx;
+  height: 208rpx;
+}
+.no-data-text {
+  color: #666;
+  font-size: 28rpx;
+  margin-top: 44rpx;
+  text-align: center;
+}

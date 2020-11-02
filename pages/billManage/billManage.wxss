@@ -1,0 +1,63 @@
+page {
+    background: #f5f5f5;
+}
+.app-body {
+    width: 750rpx;
+}
+.app-container {
+    padding: 0 30rpx;
+}
+.bill-list {
+    padding-bottom: 30rpx;
+}
+.bill-bg {
+    background: #FFF;
+}
+.bill-list-item {
+    margin-top: 30rpx;
+    border-radius: 16rpx;
+    padding: 30rpx 40rpx;
+}
+.bill-info {
+    padding-bottom: 38rpx;
+    border-bottom: 1px solid #E6E6E6;
+}
+.bill-info .items {
+    margin-bottom: 12rpx;
+}
+.bill-info .items .label {
+    min-width: 144rpx;
+    color: #1A1A1A;
+    font-size: 26rpx;
+}
+.bill-info .items .input {
+    color: #999;
+    font-size: 26rpx;
+}
+.bill-switch {
+    padding-top: 30rpx;
+    padding-bottom: 20rpx;
+}
+.bill-switch .witch-txt {
+    font-size: 32rpx;
+    color: #333;
+    height: 44rpx;
+    line-height: 44rpx;
+}
+/* swtich整体大小及背景色 */
+.wx-switch-input{
+    width: 92rpx !important;
+    height: 44rpx !important;
+    background: #ff8666 !important;
+    border: #ff8666 !important;
+}
+/* 白色样式（false的样式）*/
+.wx-switch-input::before {
+    width: 90rpx !important;
+    height: 44rpx !important;
+}
+/* 绿色样式（true的样式）*/
+.wx-switch-input::after{
+    width: 45rpx !important;
+    height: 44rpx !important;
+}

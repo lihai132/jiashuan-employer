@@ -1,0 +1,30 @@
+<view class="nanny">
+  <view class="nanny-list">
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-radio checked-color="#FF8666" wx:for="{{list}}" wx:key="{{index}}" name="{{index}}">
+        <view class="nanny-list-item">
+          <view class="head-src">
+            <image class="head-src-img" src="{{item.headimgurl}}"></image>
+          </view>
+          <view class="nanny-item-news">
+            <view class="nanny-item-news-name">姓名：{{item.name}}</view>
+            <view class="nanny-item-news-age">年龄：{{item.age}}</view>
+            <view class="nanny-item-news-address">籍贯：{{item.native_place}}</view>
+          </view>
+          <view class="nanny-item-details">
+            <van-button round type="info"
+              custom-style="width:128rpx;height:46rpx;font-size: 24rpx;line-height: 34rpx;padding:0;font-weight: 400;"
+              color="#FF8666" bindtap="gotoAetails" data-nanny_id="{{item.nanny_id}}">详细资料</van-button>
+          </view>
+          <view class="xian" wx:if="{{item.show}}"></view>
+        </view>
+      </van-radio>
+
+    </van-radio-group>
+  </view>
+  <view class="nanny-foot-but">
+    <van-button round  custom-style="width: 670rpx;height: 80rpx;background: #FF8666;border-radius: 50rpx;color:#fff; font-size: 32rpx;line-height:80rpx; margin-top: 16rpx" bindtap="choice">我选好了
+    </van-button>
+  </view>
+  <van-notify id="van-notify" />
+</view>

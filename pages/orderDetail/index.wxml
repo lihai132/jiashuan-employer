@@ -1,0 +1,236 @@
+<view class="wx-body">
+    <!-- 订单进度 试用订单详情 -->
+    <view class="wx-progress" wx:if="{{orderType == 0}}">
+        <image class="wx-progress-bg" src="../../images/order/progress-bg.png"></image>
+        <view class="wx-progress-wrapper">
+            <view class="wx-progress-container">
+                <view class="wx-progress-text flexbox justify middle">
+                    <view class="text1">订单进度</view>
+                    <block wx:if="{{refundStatus == 0}}">
+                        <view class="text2" bindtap="refund">退款</view>
+                    </block>
+                    <block wx:if="{{refundStatus == 1}}">
+                        <view class="text2">退款中</view>
+                    </block>
+                    <block wx:if="{{refundStatus == 2}}">
+                        <view class="text2">已退款</view>
+                    </block>
+                </view>
+                <view class="wx-progress-outer">
+                    <view class="wx-progress-inner flexbox left">
+                        <view wx:for="{{singular}}" wx:key="item" class="wx-progress-item {{item.orderState}}"
+                            bindtap="{{item.click}}" data-index="{{index}}" data-item="{{item}}">
+                            <view class="wx-tag">{{item.text}}</view>
+                            <view class="wx-number">{{item.index}}</view>
+                            <image class="wx-check" src="../../images/order/icon-check.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+	
+    <!-- 我的预约 试用订单详情  -->
+    <view class="wx-reserve wx-border" wx:if="{{orderType == 0}}">
+        <view class="wx-container">
+            <view class="wx-reserve-wrapper" wx:if="{{reserve}}">
+                <view class="wx-reserve-content">
+                    <view class="wx-reserve-title flexbox middle justify">
+                        <view class="title">我的预约</view>
+                    </view>
+                    <view class="wx-reserve-info">
+                        <view class="wx-reserve-item flexbox left">
+                            <view class="wx-label">服务地址</view>
+                            <view class="wx-txt">{{reserveData.address}}</view>
+                        </view>
+                        <view class="wx-reserve-item flexbox left">
+                            <view class="wx-label">联系人</view>
+                            <view class="wx-txt">{{reserveData.name}} {{reserveData.phone}}</view>
+                        </view>
+                        <view class="wx-reserve-item flexbox left">
+                            <view class="wx-label">户型/面积</view>
+                            <view class="wx-txt">{{reserveData.family_size}} / {{reserveData.house}}</view>
+                        </view>
+                        <view class="wx-reserve-item flexbox left" wx:if="{{reserveData.flavor != null}}">
+                            <view class="wx-label">口味偏好</view>
+                            <view class="wx-txt">{{reserveData.flavor}}</view>
+                        </view>
+                        <view class="wx-reserve-item flexbox left">
+                            <view class="wx-label">家人数量</view>
+                            <view class="wx-txt">{{reserveData.family_number}}</view>
+                        </view>
+                        <view class="wx-reserve-item flexbox left">
+                            <view class="wx-label">服务时间</view>
+                            <view class="wx-txt">{{reserveData.service_time}} {{part_time}}</view>
+                        </view>
+                        <view class="wx-reserve-item flexbox left" wx:if="{{reserveMsg}}">
+                            <view class="wx-label">叮嘱/备注</view>
+                            <view class="wx-txt">{{reserveData.remark == null ? '' : reserveData.remark}}</view>
+                        </view>
+                    </view>
+                    <view class="btn-more flexbox center middle" bindtap="moreHandle">
+                        查看更多
+                        <view class="icon-arror flexbox center middle {{reserveMsg == true ? 'on' : ''}}">
+                            <image src="../../images/order/icon-arror-bottom.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-data" wx:else>
+                <view class="wx-reserve-title flexbox middle justify" style="padding-top: 170rpx">
+                    <view class="title">我的预约</view>
+                </view>
+                <view class="flexbox center middle">
+                    <view style="padding-top: 30rpx">
+                        <image class="no-data-pic" src="../../images/order/no-reserve.png"></image>
+                        <view class="no-data-text">赶快预约您的首单试用吧！</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+	
+    <!-- 我的预约 长期订单详情 -->
+    <view class="wx-border" wx:if="{{orderType == 1}}"></view>
+    <view class="wx-service wx-border" wx:if="{{orderType == 1}}">
+        <view class="wx-container">
+            <view class="wx-service-wrapper">
+                <view class="wx-reserve-title flexbox middle justify">
+                    <view class="title">服务详情</view>
+                    <view class="abnormal"></view>
+                </view>
+                <view class="wx-service-content" wx:if="{{serviceData !=  ''}}">
+                    <view class="wx-service-info">
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">服务地址</view>
+                            <view class="inpput"></view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">联系人</view>
+                            <view class="inpput"></view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">户型/面积</view>
+                            <view class="inpput"></view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">口味偏好</view>
+                            <view class="inpput"></view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">家人数量</view>
+                            <view class="inpput"></view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">服务周期</view>
+                            <view class="inpput"></view>
+                        </view>
+                    </view>
+                </view>
+                <view class="wx-servicce-nodata flexbox center" wx:else>
+                    <view style="padding-top: 30rpx; padding-bottom: 104rpx">
+                        <image class="no-data-pic" src="../../images/order/no-reserve.png"></image>
+                        <view class="no-data-text">赶快预约您的长期订单吧！</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+	
+    <!-- 家政师资料 -->
+    <view class="wx-housekeeper wx-border" wx:if="{{housekeeperShow}}">
+        <view class="wx-container">
+            <view class="wx-housekeeper-title flexbox middle justify">
+                <view class="title">家政师资料</view>
+                <image src="../../images/order/icon-recommend.png" bindtap="createPoster"></image>
+            </view>
+            <view class="wx-housekeeper-content flexbox left">
+                <view class="wx-housekeeper-pic">
+                    <image src="{{nannyData.headimgurl}}"></image>
+                </view>
+                <view class="wx-housekeeper-info">
+                    <view class="wx-info flexbox justify">
+                        <view class="wx-info-left">
+                            <view class="wx-info-name">{{nannyData.name}}</view>
+                            <view class="wx-info-phone">{{nannyData.phone}}</view>
+                        </view>
+                        <view class="wx-info-right flexbox left">
+                            <image src="{{nannyData.src}}" bindtap="{{nannyData.click}}"></image>
+                            <image src="../../images/order/phone.png" bindtap="telHandle" data-phone="{{nannyData.phone}}"></image>
+                        </view>
+                    </view>
+                    <view class="wx-info-date">家政师上门时间为：{{service_time}} {{part_time}}</view>
+                </view>
+            </view>
+            <view class="wx-housekeeper-btn flexbox right">
+                <view class="btn-contact" bindtap="telHandle" data-phone="{{nannyData.station_phone}}">联系站长</view>
+            </view>
+        </view>
+    </view>
+	
+    <!-- 订单信息 -->
+    <view class="wx-orderMsg">
+        <view class="wx-container">
+            <view class="wx-title">订单信息</view>
+            <view class="wx-orderMsg-content">
+                <view class="wx-orderMsg-item flexbox left middle">
+                    <view class="wx-label">订单编号</view>
+                    <view class="wx-txt">{{order_id}}</view>
+                </view>
+                <view class="wx-orderMsg-item flexbox left middle">
+                    <view class="wx-label">支付时间</view>
+                    <view class="wx-txt">{{pay_time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+	
+    <!-- 按钮组 -->
+    <view class="btn-wrapper">
+        <view class="btn-container">
+            <view class="wx-btn-group flexbox middle">
+				<view class="wx-btn btn-primary btn-large" data-type="1" bindtap="toPage" wx:if="{{butShow1}}">我要预约</view>
+				<view class="wx-btn btn-primary btn-large" data-type="1" bindtap="toPage" wx:if="{{butShow6}}">重选日期</view>
+				<view class="wx-btn btn-disabled btn-large" wx:if="{{butShow2}}">匹配中</view>
+				<view class="wx-btn btn-primary btn-large" data-type="3" bindtap="toPage" wx:if="{{butShow3}}">挑选家政师</view>
+				<block wx:if="{{butShow4}}">
+					<view class="wx-btn btn-default btn-large" bindtap="toPage" data-type="1">继续预约</view>
+					<!-- <view class="wx-btn btn-primary btn-mini">转包月服务</view> -->
+				</block>
+            </view>
+        </view>
+    </view>
+	
+    <!-- 调查问卷 -->
+    <van-action-sheet show="{{ questionShow }}" title="请您根据本次服务回答以下问题" bind:close="onClose">
+        <view class="question-container">
+            <view class="question-item flexbox justify" wx:for="{{questionList}}" wx:key="index">
+                <view class="question-label">{{item.title}}</view>
+                <view class="question-select flexbox right">
+                    <view class="select-items {{item.checked == 'true' && item.checked != '' ? 'on' : ''}}" bindtap="questionSelect" data-index="{{index}}" data-select="true">是</view>
+                    <view class="select-items {{item.checked == 'false' && item.checked != '' ? 'on' : ''}}" bindtap="questionSelect" data-index="{{index}}" data-select="false">否</view>
+                </view>
+            </view>
+            <view class="wx-btn btn-primary" bindtap="submitQuestion">确认提交</view>
+        </view>
+    </van-action-sheet>
+
+    <!-- 生成海报 -->
+    <view class='imagePathBox' hidden="{{maskHidden == false}}">
+        <van-icon class="icon-close" name="close" color="#fff" size="33px" bindtap="closePoster" />
+        <image src="{{imagePath}}" class='shengcheng'></image>
+        <button class='savePoster' bindtap='savePoster'>
+            <view class="flexbox middle center">
+                <image class="icon-download" src="../../images/order/download.png" mode="widthFix"></image>
+                <text>保存海报到相册</text>
+            </view>
+        </button>
+    </view>
+    <view hidden="{{maskHidden == false}}" class="mask"></view>
+    <view class="canvas-box">
+        <canvas style="width: 375px;height: 667px;position:fixed;top:9999px" canvas-id="canvas" />
+    </view>
+
+    <van-dialog id="van-dialog" confirm-button-color="#999" cancel-button-color="#FF8666" />
+    <van-notify id="van-notify" />
+</view>

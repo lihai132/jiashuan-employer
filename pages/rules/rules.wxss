@@ -1,0 +1,22 @@
+.fixed-bg {
+    width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+.rule-box {
+    background: #fff;
+    margin: 40rpx;
+    border-radius: 24rpx;
+}
+/* .rule-info {
+   padding: 30rpx;
+} */
+.rule-item {
+    color: #1A1A1A;
+    font-size: 32rpx;
+    line-height: 40rpx;
+    margin-bottom: 20rpx;
+}

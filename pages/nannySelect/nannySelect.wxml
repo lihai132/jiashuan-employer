@@ -1,0 +1,40 @@
+<view class="app-body">
+    <view class="nodata" wx:if="{{nannyList.length == 0}}">
+        <view class="flexbox center">
+            <image src="../../images/home/no-detail.png"></image>
+        </view>
+        <view class="nodata-text flexbox center">暂无家政师~</view>
+    </view>
+    <block wx:else>
+        <scroll-view class="nanny-list" scroll-y="true" style="height: {{wHeight}}px;">
+            <view class="item flexbox" wx:for="{{nannyList}}" wx:key="index">
+                <view class="radio-box flexbox middle center">
+                    <icon type="success" size="22" color="#ff8666" wx:if="{{index == nannyIndex}}"></icon>
+                    <view class="radio" wx:else bindtap="radioChecked" data-index="{{index}}" data-nanny_id="{{item.nanny_id}}"></view>
+                </view>
+                <view class="nanny-img">
+                    <image src="{{item.headimgurl}}"></image>
+                </view>
+                <view class="nanny-info flex1">
+                    <view class="items name flexbox middle">
+                        <view class="label">姓名：</view>
+                        <view class="input">{{ item.name }}</view>
+                    </view>
+                    <view class="items flexbox middle">
+                        <view class="label">年龄：</view>
+                        <view class="input">{{ item.age }}</view>
+                    </view>
+                    <view class="items flexbox middle">
+                        <view class="label">籍贯：</view>
+                        <view class="input">{{ item.native_place }}</view>
+                    </view>
+                    <!-- <view class="flexbox right"><text class="btn-primary">详细资料</text></view> -->
+                </view>
+            </view>
+        </scroll-view>
+        <view class="btn-group flexbox middle center">
+            <view class="btn {{btnStatus == true ? 'btn-primary' : 'btn-disabled'}}" bindtap="submit">我选好了</view>
+        </view>
+    </block>
+</view>
+<van-notify id="van-notify" />

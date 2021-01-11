@@ -1,0 +1,84 @@
+<wxs src="./index.wxs" module="computed"></wxs>
+
+<view class="app-body">
+    <block wx:if="{{ isLoading }}">
+        <view class="flexbox middle center" style="height: {{height}}px">
+            <van-loading color="#ff8666" size="36px" vertical>加载中...</van-loading>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="calendar-height" style="height: {{footerHeight}}px">
+            <view class="wx-calendar">
+                <view class="wx-calendar-header">
+                    <view class="wx-calendar-weekdays">
+                        <view class="wx-calendar-weekday" wx:for="{{weekdays}}" wx:key="index">{{item}}</view>
+                    </view>
+                </view>
+                <scroll-view class="wx-calendar-body" scroll-y>
+                    <view class="month" wx:for="{{ months }}" wx:key="index" id="month{{ index }}" data-date="{{ item.timestamp }}">
+                        <view class="wx-calendar-month">
+                            <view class="wx-calendar-month-title">{{ item.month_title }}</view>
+                            <view class="wx-calendar-days">
+                                <view class="wx-calendar-day {{item2.type == 'disabled' ? 'disabled' : ''}}" bindtap="onClick" wx:for="{{item.days}}" wx:key="index" wx:for-index="idx" wx:for-item="item2" data-index="{{idx}}" data-monthIdx="{{index}}" style="{{ computed.getDayStyle(item2.type, idx, item.week, rowHeight, color) }}">
+                                    <view class="{{ item2.type == 'selected' ? 'wx-calendar-selected-day' : ''}}">
+                                        {{item2.text}}
+                                        <view wx:if="{{ item2.bottomInfo }}" class="wx-calendar-bottom-info">
+                                            {{ item2.bottomInfo }}
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view class="footer-wrapper">
+            <view class="footer-info">
+                <block wx:if="{{goods_type == 1}}">
+                    <view class="text" wx:if="{{ showDate.length == 0 }}">请选择1个<text wx:if="{{goods_type == 1}}">{{week_name}}</text>日期作为首次服务日期</view>
+                    <view class="wrapper" wx:else>
+                        <view class="title">您已选择（{{ showDate.length }}/{{maxNum}}）个服务日期</view>
+                        <view class="datelist flexbox wrap">
+                            <view class="items flexbox center middle" wx:for="{{showDate}}" wx:key="index" bindtap="delHandle" data-item="{{item}}">
+                                <view class="date">{{item}}</view>
+                                <van-icon class="close-icon" name="cross" color="#ccc" size="28rpx" />
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="text" wx:if="{{ showDate.length == 0 }}">请选择 {{maxNum}} 个服务日期&时间段</view>
+                    <view class="wrapper" wx:else>
+                        <view class="title">您已选择（{{ showDate.length }}/{{maxNum}}）个服务日期&时间段</view>
+                        <view class="datelist flexbox wrap">
+                            <view class="items flexbox center middle" wx:for="{{showDate}}" wx:key="index" bindtap="delHandle" data-item="{{item}}">
+                                <view class="date">{{item}}</view>
+                                <van-icon class="close-icon" name="cross" color="#ccc" size="28rpx" />
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="btns-box">
+                <view class="btn {{isSubmit == true ? 'primary-btn' : ''}}" bindtap="submit">确定</view>
+            </view>
+        </view>
+    </block>
+</view>
+<van-notify id="van-notify" />
+<van-popup show="{{ popupshow }}" round position="bottom" custom-style="height: 50%" bind:close="onClosePopup" closeable close-on-click-overlay="{{false}}">
+    <view class="popup-wrapper">
+        <view class="title flexbox center">选择服务时间</view>
+        <view class="date-box">
+            <view class="date-title">{{ popupTitle }}</view>
+            <view class="date-list flexbox wrap">
+                <view wx:for="{{popupList}}" wx:key="index" bindtap="onPopupSelect" data-index="{{index}}" class="item {{item.checked == true ? 'on' : ''}} {{item.is_full == 0 ? 'disabled' : ''}}">{{item.time}} {{item.is_full == 0 ? '约满' : ''}}</view>
+            </view>
+        </view>
+        <view class="btns-box date-btns">
+            <view class="btn primary-btn" bindtap="onPopupConfirm">确定</view>
+        </view>
+    </view>
+</van-popup>
+<van-dialog id="van-dialog" confirm-button-color="#ff8666" />

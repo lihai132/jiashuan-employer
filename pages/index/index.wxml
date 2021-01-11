@@ -1,0 +1,167 @@
+<view class="app-body">
+	<block wx:if="{{isNetword}}">
+		<view class="app-header">
+			<view class="addr-fixed flexbox justify middle">
+				<view class="addr-info flexbox middle" bindtap="toPage" data-type="address">
+					<image src="../../images/home/icon-address.png" lazy-load="true"></image>
+					<text>{{ city }}</text>
+				</view>
+				<view class="company-info flexbox middle">
+					<image src="../../images/home/icon0.png" lazy-load="true"></image>
+					<text>广州市家政服务综合平台注册企业</text>
+				</view>
+			</view>
+			<view class="swiper-box">
+				<swiper autoplay circular interval="4000" style="height:340rpx;" bindchange="swiperChange">
+					<block wx:for="{{banner}}" wx:key="index">
+						<swiper-item>
+							<image class="banner" src="{{ item.images }}" bindtap="toPage" data-pages="{{item.pages}}"></image>
+						</swiper-item>
+					</block>
+				</swiper>
+				<view class="dots">
+					<block wx:for="{{banner}}" wx:key="index"> 
+						<view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view> 
+					</block> 
+				</view>
+			</view>
+			<view class="icon-info flexbox center">
+				<view class="icon-item flexbox middle">
+					<image src="../../images/home/icon1.png" lazy-load="true"></image>
+					<text>实名认证</text>
+				</view>
+				<view class="icon-item flexbox middle">
+					<image src="../../images/home/icon2.png" lazy-load="true"></image>
+					<text>专业工具</text>
+				</view>
+				<view class="icon-item flexbox middle">
+					<image src="../../images/home/icon3.png" lazy-load="true"></image>
+					<text>标准流程</text>
+				</view>
+				<view class="icon-item flexbox middle">
+					<image src="../../images/home/icon4.png" lazy-load="true"></image>
+					<text>售后保障</text>
+				</view>
+			</view>
+		</view>
+		<view class="app-content">
+			<view class="home-block">
+				<view class="app-loading flexbox center middle" wx:if="{{isLoading}}">
+					<van-loading color="#ff8666" />
+				</view>
+				<view class="list-box">
+					<view class="list-box-item" wx:for="{{partList}}" wx:key="index">
+						<view class="wx-title flexbox left middle">
+							<image src="../../images/home/home-icon2.png" lazy-load="true"></image>
+							<view class="title">{{item.title}}</view>
+						</view>
+						<view class="items-wrapper">
+							<view class="items flexbox" wx:for="{{item.list}}" wx:key="index" wx:for-item="items" bindtap="toPage" data-type="detail" data-id="{{items.goods_id}}">
+								<view class="items-pic">
+									<image src="{{items.images}}" lazy-load="true"></image>
+								</view>
+								<view class="items-info flex1">
+									<view style="height: 160rpx">
+										<view class="title flexbox middle justify">
+											<view class="flexbox middle">
+												<text class="tag" wx:if="{{ items.discount_msg != '' }}">{{ items.discount_msg }}</text>
+												{{ items.subtitle1 }}
+											</view>
+											<view wx:if="{{ items.countdown != 0 }}" class="time-warpper flexbox middle">
+												<text class="time-count">{{items.formatTime[0]}}</text>:
+												<text class="time-count">{{items.formatTime[1]}}</text>:
+												<text class="time-count">{{items.formatTime[2]}}</text>:
+												<text class="time-count">{{items.formatTime[3]}}</text>
+											</view>
+										</view>
+										<view class="subtitle ellipsis" wx:if="{{ items.subtitle2 }}">{{ items.subtitle2 }}</view>
+										<view class="subtitle ellipsis active" wx:if="{{ items.subtitle3 }}">{{ items.subtitle3 }}</view>
+									</view>
+									<view class="info flexbox bottom justify">
+										<view class="flexbox bottom ellipsis">
+											<view class="price">
+												<text class="t1">¥</text>
+												<text>{{ items.price }}</text>
+												<text class="t1">{{ items.unit }}</text>
+											</view>
+											<view class="original-price" wx:if="{{ items.price != items.market_price }}">
+												<text>{{ items.unit_price }}</text>
+											</view>
+										</view>
+										<view class="button-buy">立即抢购</view>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="service-box">
+					<view class="wx-title flexbox left middle">
+						<image src="../../images/home/home-icon2.png" lazy-load="true"></image>
+						<view class="title">服务内容</view>
+					</view>
+					<view class="wx-wrapper">
+						<image class="service-img" src="../../images/home/service-bg.png" lazy-load="true"></image>
+						<view style="position: absolute; top: 0;">
+							<view class="service-title">全屋6区全覆盖</view>
+							<view class="img-outter flexbox wrap">
+								<view class="item">
+									<image src="../../images/home/parlor.png" lazy-load="true"></image>
+								</view>
+								<view class="item">
+									<image src="../../images/home/kitchen.png" lazy-load="true"></image>
+								</view>
+								<view class="item">
+									<image src="../../images/home/bedroom.png" lazy-load="true"></image>
+								</view>
+								<view class="item">
+									<image src="../../images/home/wc.png" lazy-load="true"></image>
+								</view>
+								<view class="item">
+									<image src="../../images/home/balcony.png" lazy-load="true"></image>
+								</view>
+								<view class="item">
+									<image src="../../images/home/study.png" lazy-load="true"></image>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+	<block wx:else>
+		<view class="no-data flexbox center">
+			<view class="no-data-wrap">
+				<image class="no-data-pic" src="../../images/home/no-netword.png" lazy-load="true"></image>
+				<view class="no-data-text">暂无网络，刷新试一下吧～</view>
+				<view class="btn btn-primary" bindtap="refresh">刷新网络</view>
+			</view>
+		</view>
+	</block>
+</view>
+<!-- 分享有礼 -->
+<!-- <view class="wx-mask flexbox center middle" wx:if="{{ activeShow }}">
+	<view class="confirm-box">
+        <view class="flexbox middle center">
+            <image src="{{activeImg}}" mode="widthFix" bindtap="toPage" data-type="active"></image>
+        </view>
+		<van-icon class="flexbox center" size="35px" name="close" color="#fff" style="margin-top: 80rpx" bindtap="closeTips" data-index="2" />
+	</view>
+</view> -->
+
+<view class="fixed-wrap" wx:if="{{phoneShow}}">
+	<image src="../../images/home/mobile.png" bindtap="callPhone" lazy-load="true"></image>
+</view>
+<van-popup show="{{ phoneListshow }}" closeable round position="bottom" custom-style="height: 60%" bind:close="onMobileClose">
+	<view class="mobile-container">
+		<view class="mobile-list-title">请选择需要联系的家政师</view>
+		<view class="mobile-list">
+			<view class="mobile-list-item flexbox center" wx:for="{{phoneList}}" wx:key="index" bindtap="callMobile" data-phone="{{item.phone}}">
+				<text>{{item.name}}</text>
+				<view>{{item.phone}}</view>
+			</view>
+		</view>
+	</view>
+</van-popup>
+<van-notify id="van-notify" />

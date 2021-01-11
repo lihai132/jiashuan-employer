@@ -1,0 +1,9 @@
+<view class="app-body">
+    <view class="flexbox center">
+        <view>
+            <image class="nodata-img" src="../../images/home/no-detail.png"></image>
+            <view class="nodata-text">当前页面，暂无内容～</view>
+            <view class="nodata-btn" catchtap="toPage">返回首页</view>
+        </view>
+    </view>
+</view>

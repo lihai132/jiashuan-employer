@@ -1,0 +1,340 @@
+.app-header {
+	position: relative;
+	padding: 0 30rpx 48rpx;
+	background: #FFFFFF;
+	box-shadow: 0 32rpx 40rpx 0 rgba(0, 0, 0, 0.06);
+	border-radius: 0 0 44rpx 44rpx;
+}
+.app-header .addr-fixed {
+	background-color: #fff;
+	height: 94rpx;
+}
+.app-header .addr-info image {
+	width: 20rpx;
+	height: 28rpx;
+	margin-right: 6rpx;
+}
+.app-header .addr-info text {
+	color: #1A1A1A;
+	font-size: 28rpx;
+	font-weight: bold;
+	line-height: 40rpx;
+}
+.app-header .company-info image {
+	width: 20rpx;
+	height: 24rpx;
+	margin-right: 6rpx;
+}
+.app-header .company-info text {
+	color: #B08D43;
+	font-size: 24rpx;
+	line-height: 34rpx;
+}
+.swiper-box {
+	position: relative;
+	width: 100%;
+}
+.dots { 
+	position: absolute; 
+	left: 0; 
+	right: 0; 
+	bottom: 20rpx; 
+	display: flex;
+	justify-content: center; 
+}
+.dots .dot{ 
+	margin: 0 8rpx;
+	width: 10rpx;
+	height: 10rpx;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 5rpx;
+	transition: all .6s;
+} 
+.dots .dot.active{ 
+	width: 30rpx;
+	background: #fff; 
+}
+.app-header .banner {
+	width: 690rpx;
+	height: 340rpx;
+	border-radius: 20rpx;
+}
+.app-header .icon-info {
+	margin-top: 14rpx;
+}
+.app-header .icon-info .icon-item {
+	margin-right: 36rpx;
+}
+.app-header .icon-info .icon-item:last-child {
+	margin-right: 0;
+}
+.app-header .icon-info .icon-item image {
+	width: 24rpx;
+	height: 24rpx;
+}
+.app-header .icon-info .icon-item text {
+	color: #B08D43;
+	font-size: 24rpx;
+	margin-left: 6rpx;
+}
+
+.app-content {
+	position: relative;
+}
+.app-content .home-block {
+	width: 750rpx;
+	padding-top: 50rpx;
+}
+.list-box {
+	padding: 0 30rpx;
+}
+.list-box-item {
+	margin-bottom: 60rpx;
+}
+.wx-title image {
+	width: 26rpx;
+	height: 16rpx;
+}
+.wx-title .title {
+	margin-left: 20rpx;
+	color: #1A1A1A;
+	font-size: 36rpx;
+	height: 50rpx;
+	font-weight: 600;
+}
+.items-wrapper .items {
+	background-color: #fff;
+	padding: 24rpx;
+	box-shadow: 0 0 60rpx 0 rgba(0, 0, 0, 0.06);
+	border-radius: 36rpx;
+	margin-top: 40rpx;
+}
+.items-wrapper .items-pic {
+	width: 214rpx;
+	height: 214rpx;
+	min-width: 214rpx;
+	margin-right: 30rpx;
+}
+.items-wrapper .items-pic image {
+	width: 100%;
+	height: 100%;
+}
+.items-wrapper .items-info {
+	height: 232rpx;
+}
+.items-wrapper .items-info .title {
+	font-size: 32rpx;
+	color: #1A1A1A;
+	line-height: 44rpx;
+	font-weight: bold;
+}
+.items-wrapper .items-info .tag {
+	padding: 0 10rpx;
+	min-height: 28rpx;
+	line-height: 28rpx;
+	background: linear-gradient(135deg, #FE4F02 0%, #F86B39 100%);
+	border-radius: 8rpx;
+	font-size: 20rpx;
+	color: #fff;
+	margin-right: 8rpx;
+}
+.items-wrapper .items-info .subtitle {
+	font-size: 28rpx;
+	color: #959CA4;
+	line-height: 40rpx;
+	font-weight: 500;
+	margin-top: 12rpx;
+}
+.items-wrapper .items-info .subtitle.active {
+	color: #FF8666;
+	font-size: 24rpx;
+}
+.items-wrapper .items-info .info {
+	height: 60rpx;
+}
+.items-wrapper .items-info .price {
+	color: #FD5209;
+	font-size: 36rpx;
+	font-weight: bold;
+	/* line-height: 50rpx; */
+}
+.items-wrapper .items-info .original-price {
+	color: #999;
+	font-size: 24rpx;
+	margin-left: 6rpx;
+	/* text-decoration: line-through; */
+	padding: 3rpx 0;
+}
+.items-wrapper .items-info .price .t1 {
+	font-weight: bold;
+	font-size: 24rpx;
+	margin-right: 4rpx;
+}
+.items-wrapper .items-info .button-buy {
+	width: 160rpx;
+	height: 56rpx;
+	line-height: 56rpx;
+	background: linear-gradient(90deg, #FFBB9F 0%, #FF8666 100%);
+	border-radius: 26rpx;
+	text-align: center;
+	color: #fff;
+	font-size: 28rpx;
+}
+.service-box {
+	padding: 0 30rpx;
+	padding-bottom: 100rpx;
+}
+.service-box .wx-wrapper {
+	margin-top: 28rpx;
+	width: 100%;
+	border-radius: 36rpx;
+	position: relative;
+}
+.service-box .wx-wrapper .service-img {
+	width: 690rpx;
+	height: 1146rpx;
+}
+.service-box .service-title {
+	padding-top: 60rpx;
+	padding-bottom: 8rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #565555;
+	line-height: 44rpx;
+	text-align: center;
+}
+.service-box .line-outter .line {
+	width: 36rpx;
+	height: 2rpx;
+	background: #BEBBB4;
+	border-radius: 1rpx;
+	margin: 0 auto;
+	margin-bottom: 2rpx;
+}
+.service-box .img-outter {
+	margin-top: 40rpx;
+	padding: 0 30rpx;
+}
+.service-box .img-outter .item:nth-child(2n-1) {
+	margin-right: 18rpx;
+}
+.service-box .img-outter .item image {
+	width: 306rpx;
+	height: 306rpx;
+	margin-bottom: 18rpx;
+}
+.time-warpper {
+	color: #FD5209;
+	font-weight: 500;
+	font-size: 20rpx;
+}
+.time-warpper .time-count {
+	position: relative;
+	background-color: #FD5209;
+	width: 32rpx;
+	height: 32rpx;
+	text-align: center;
+	border-radius: 6rpx;
+	color: #fff;
+	font-size: 20rpx;
+	line-height: 32rpx;
+	margin: 0 2rpx;
+}
+/* .time-warpper .time-count:nth-last-child(n+2) {
+	margin-right: 10rpx;
+}
+.time-warpper .time-count:nth-last-child(n+2):after {
+	display: inline-block;
+	content: ':';
+	position: absolute;
+	top: 0;
+	right: -24rpx;
+	height: 32rpx;
+	line-height: 26rpx;
+	width: 22rpx;
+	color: #ff8666;
+	font-weight: 700;
+} */
+
+.no-data {
+	width: 750rpx;
+}
+.no-data-wrap {
+	margin-top: 252rpx;
+}
+.no-data-pic {
+	width: 360rpx;
+	height: 209rpx;
+	overflow: hidden;
+}
+.no-data-text {
+	margin-top: 44rpx;
+	margin-bottom: 24rpx;
+	color: #666;
+	font-size: 28rpx;
+}
+.btn-primary {
+	margin: 0 auto;
+	width: 168rpx;
+	height: 56rpx;
+	line-height: 56rpx;
+	background: linear-gradient(90deg, #FFBB9F 0%, #FF8666 100%);
+	border-radius: 35px;
+	color: #fff;
+	font-size: 24rpx;
+	text-align: center;
+}
+.fixed-wrap {
+	position: fixed;
+	right: 18rpx;
+	bottom: 94rpx;
+}
+.fixed-wrap image {
+	width: 156rpx;
+	height: 158rpx;
+}
+
+/* 拨打电话列表样式 */
+.mobile-container {
+	height: 92%;
+	width: 750rpx;
+}
+.mobile-list-title {
+	height: 50rpx;
+	line-height: 50rpx;
+	text-align: center;
+	color: #1A1A1A;
+	font-size: 36rpx;
+	margin-top: 50rpx;
+	margin-bottom: 40rpx;
+}
+.mobile-list {
+	height: calc(100% - 100rpx);
+	padding: 0 30rpx;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.mobile-list-item {
+	border-top: 2rpx solid #f6f6f6;
+	padding: 38rpx 0;
+	height: 48rpx;
+	line-height: 48rpx;
+	font-size: 34rpx;
+	color: #FF8666;
+}
+.mobile-list-item:first-child {
+	border-top: none;
+}
+.mobile-list-item text {
+	margin-right: 30rpx;
+}
+
+.wx-mask {
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background: rgba(29, 29, 29, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+}

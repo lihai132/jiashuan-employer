@@ -1,0 +1,194 @@
+.calendar {
+    --calendar-height: 500px;
+}
+.wx-calendar {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #fff;
+}
+.wx-calendar-header {
+	flex-shrink: 0;
+	box-shadow: 0 4px 20rpx rgba(125, 126, 128, .16);
+}
+.wx-calendar-weekdays {
+	display: flex;
+}
+.wx-calendar-weekday {
+	flex: 1;
+	text-align: center;
+	font-size: 24rpx;
+	line-height: 60rpx;
+}
+.wx-calendar-body {
+	flex: 1;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.wx-calendar-month-title {
+	text-align: center;
+	height: 88rpx;
+	line-height: 88rpx;
+	font-weight: 500;
+	font-size: 28rpx;
+}
+.wx-calendar-days {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	user-select: none;
+}
+.wx-calendar-day, .wx-calendar-select-day {
+	display: flex;
+	/* align-items: center; */
+	justify-content: center;
+	text-align: center;
+}
+.wx-calendar-day {
+	position: relative;
+	width: 14.285%;
+	height: 128rpx;
+    font-size: 28rpx;
+    line-height: 80rpx;
+}
+.wx-calendar-day.disabled {
+	color: #c8c9cc;
+	cursor: default;
+}
+.wx-calendar-selected-day {
+	/* width: 108rpx;
+    height: 108rpx;
+    line-height: 108rpx; */
+	color: #fff;
+	background-color: #ff8666;
+    /* border-radius: 8rpx; */
+    width: 100rpx;
+    height: 100rpx;
+    line-height: 80rpx;
+    border-radius: 50%;
+}
+.wx-calendar-bottom-info {
+	position: absolute;
+	right: 0;
+	left: 0;
+    /* bottom: 12rpx; */
+    bottom: 44rpx;
+	font-size: 24rpx;
+	line-height: 28rpx;
+}
+.footer-wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 60rpx 0 rgba(0, 0, 0, 0.16);
+    border-radius: 20rpx 20rpx 0 0;
+}
+.footer-info {
+    padding-top: 50rpx;
+    padding-bottom: 42rpx;
+}
+.footer-info .text {
+    text-align: center;
+    color: #ee0a24;
+    font-size: 26rpx;
+}
+.footer-info .wrapper {
+    padding: 0 40rpx;
+}
+.footer-info .wrapper .title {
+    font-size: 28rpx;
+    color: #1D1D1D;
+    line-height: 40rpx;
+}
+.footer-info .wrapper .datelist .items {
+    width: 320rpx;
+    height: 56rpx;
+    background: #F6F6F6;
+    border-radius: 28rpx;
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+}
+.footer-info .wrapper .datelist .items:nth-child(2n) {
+    margin-right: 0;
+}
+.footer-info .wrapper .datelist .items .date {
+    color: #666666;
+    font-size: 28rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    padding-right: 24rpx;
+    border-right: 1px solid #ccc;
+}
+.footer-info .wrapper .datelist .items .close-icon {
+    padding-left: 24rpx;
+}
+.btns-box {
+    padding: 10rpx 0;
+    border-top: 1px solid #F6F6F6;
+}
+.btns-box .btn {
+    width: 670rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    text-align: center;
+    color: #fff;
+    background: #ff8666;
+    font-size: 34rpx;
+    border-radius: 46rpx;
+    margin: 0 auto;
+    opacity: 0.5;
+}
+.btns-box .btn.primary-btn {
+    background: #ff8666;
+    opacity: 1;
+}
+.popup-wrapper .title {
+    font-size: 36rpx;
+    color: #1A1A1A;
+    margin-top: 50rpx;
+    margin-bottom: 80rpx;
+}
+.popup-wrapper .date-box {
+    padding: 0 40rpx;
+}
+.popup-wrapper .date-box .date-title {
+    color: #1D1D1D;
+    font-size: 28rpx;
+}
+.popup-wrapper .date-box .date-list .item {
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+    width: 316rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    text-align: center;
+    background: #F6F6F6;
+    border-radius: 28rpx;
+    color: #666666;
+    font-size: 28rpx;
+    border: 2rpx solid transparent;
+}
+.popup-wrapper .date-box .date-list .item:nth-child(2n) {
+    margin-right: 0;
+}
+.popup-wrapper .date-box .date-list .item.on {
+    background: rgba(255, 134, 102, 0.1);
+    border: 1px solid #ff8666;
+    color: #ff8666;
+}
+.popup-wrapper .date-box .date-list .item.disabled {
+    background: #F2F2F2;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.popup-wrapper .date-btns {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.van-dialog__button button {
+	width: 100% !important;
+}

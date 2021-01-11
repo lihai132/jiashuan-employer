@@ -1,0 +1,29 @@
+<block wx:if="{{ isLoading }}">
+    <view class="flexbox middle center" style="height: {{ maskH }}px">
+        <van-loading color="#ff8666" size="36px" vertical>加载中...</van-loading>
+    </view>
+</block>
+<block wx:else>
+    <image src="{{posterImg}}" mode="widthFix" style="width: 100%; padding-bottom: 110rpx"></image>
+    <view class="btn-group">
+        <view class="flexbox middle justify" style="padding: 10rpx 40rpx;">
+            <view class="flexbox middle" style="padding-left: 4rpx">
+                <view class="share-info" bindtap="openShare">
+                    <image src="../../images/home/icon-share.png"></image>
+                    <view class="text">分享</view>
+                </view>
+            </view>
+            <view class="btn btn-primary" bindtap="toPage">立即购买</view>
+        </view>
+    </view>
+</block>
+<!-- 分享 -->
+<view class="wx-mask flexbox right" wx:if="{{ shareShow }}" bindtap="closeShare">
+    <image class="icon-up" src="../../images/home/icon-up.png"></image>
+    <view class="msg-box flexbox middle center" catchtap="openShare">
+        <view>
+            <view class="flexbox middle">点击上方 <text class="circle" wx:for="{{[0, 1, 2]}}" wx:key="index"></text> 更多按钮</view>
+            <view>邀请好友来参加活动吧</view>
+        </view>
+    </view>
+</view>

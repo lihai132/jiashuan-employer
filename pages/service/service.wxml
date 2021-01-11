@@ -1,0 +1,153 @@
+<view class="wx-container">
+    <view class="wx-box">
+        <view class="wx-form">
+            <block wx:if="{{detailData.goods_type == 1}}">
+                <view class="form-item">
+                    <view class="wx-label flexbox left middle">
+                        <view class="label">服务周期</view>
+                        <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                    </view>
+                    <view class="wx-input flexbox justify middle" bindtap="onWeekPopup">
+                        <input class="wx-input-inner" disabled="true" type="text" value="{{ detailData.week_name }}" placeholder="请选择服务周期" />
+                        <image class="wx-icon" src="../../images/order/icon-arrow-right.png"></image>
+                    </view>
+                </view>
+                <view class="form-item">
+                    <view class="wx-label flexbox left middle">
+                        <view class="label">首单日期</view>
+                        <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                    </view>
+                    <view class="wx-input flexbox justify middle" bindtap="onDisplay">
+                        <block wx:if="{{ formData.service_date == '' }}">
+                            <input class="wx-input-inner" disabled="true" type="text" value="{{ formData.service_date }}" placeholder="请选择服务日期" />
+                        </block>
+                        <block wx:else>
+                            <view style="padding: 10rpx 0;">
+                                <view wx:for="{{ serviceDateList }}" wx:key="index" class="address-name">{{ item }}</view>
+                            </view>
+                        </block>
+                        <image class="wx-icon" src="../../images/order/icon-calendar.png"></image>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="form-item">
+                    <view class="wx-label flexbox left middle">
+                        <view class="label">日期</view>
+                        <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                    </view>
+                    <view class="wx-input flexbox justify middle" bindtap="onDisplay">
+                        <block wx:if="{{ formData.service_date == '' }}">
+                            <block wx:if="{{subtitle4}}">
+                                <input class="wx-input-inner" disabled="true" type="text" value="{{ formData.service_date }}" placeholder="{{subtitle4}}" />
+                            </block>
+                            <block wx:else>
+                                <input class="wx-input-inner" disabled="true" type="text" value="{{ formData.service_date }}" placeholder="请选择服务日期&时间段" />
+                            </block>
+                        </block>
+                        <block wx:else>
+                            <view style="padding: 10rpx 0;">
+                                <view wx:for="{{ serviceDateList }}" wx:key="index" class="address-name">{{ item }}</view>
+                            </view>
+                        </block>
+                        <image class="wx-icon" src="../../images/order/icon-calendar.png"></image>
+                    </view>
+                </view>
+            </block>
+            <view class="form-item">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">姓名</view>
+                    <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                </view>
+                <view class="wx-input flexbox middle">
+                    <input class="wx-input-inner" type="text" value="{{ formData.name }}" placeholder="请填写联系人" bindinput="bindNameInput" bindblur="blurInput" data-type="name" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">电话号码</view>
+                    <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                </view>
+                <view class="wx-input flexbox middle">
+                    <input class="wx-input-inner" type="number" value="{{ formData.phone }}" placeholder="请填写电话号码" bindinput="bindPhoneInput" bindblur="blurInput" maxlength="11" data-type="phone" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">服务地址</view>
+                    <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                </view>
+                <view class="wx-input flexbox justify middle" bindtap="bindClickAdress">
+                    <input wx:if="{{ formData.address == '' }}" class="wx-input-inner" type="text" value="{{ formData.address }}" disabled="true" placeholder="请选择服务地址" />
+                    <view wx:if="{{ formData.address != '' }}" style="padding: 10rpx 0;">
+                        <view class="address-name">{{ addressName }}</view>
+                        <view class="address-name">{{ address }}</view>
+                    </view>
+                    <image class="wx-icon" style="width: 24rpx; min-width: 24rpx" src="../../images/order/icon-location.png"></image>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">门牌号(请务必填写准确)</view>
+                    <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                </view>
+                <view class="wx-input flexbox middle">
+                    <input class="wx-input-inner" type="text" value="{{ formData.house_number }}" placeholder="例：8号楼1803室" bindinput="bindNumberInput" bindblur="blurInput" data-type="number" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">房屋户型</view>
+                    <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                </view>
+                <view class="wx-selectBox flexbox left wrap">
+                    <view wx:for="{{houseList}}" wx:key="index" bindtap='changRoom' data-index='{{index}}' class="wx-item {{roomSelected == index ? 'on' : ''}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">家庭面积</view>
+                    <image class="star" src="../../images/order/icon-star.png" mode="aspectFit"></image>
+                </view>
+                <view class="wx-selectBox flexbox left wrap">
+                    <view wx:for="{{areaList}}" wx:key="index" bindtap='changArea' data-index='{{index}}' class="wx-item {{areaSelected == index ? 'on' : ''}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view class="form-item" wx:if="{{detailData.goods_type == 0}}">
+                <view class="wx-label flexbox left middle">
+                    <view class="label">叮嘱与备注</view>
+                </view>
+                <view class="wx-textarea flexbox">
+                    <textarea placeholder="选填" maxlength="200" value="{{formData.remark}}" bindblur="blurInput" data-type="remark" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="wx-btns border-top">
+                    <view class="btn btn-primary" bindtap="submit">确认</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<van-notify id="van-notify" />
+<van-popup show="{{ weekShow }}" round closeable position="bottom" close-on-click-overlay="false" custom-style="height: 70%" bind:close="onWeekPopup">
+    <view class="popup-container">
+        <view class="popup-title flexbox center">选择服务周期</view>
+        <view class="popup-wrapper">
+            <view class="popup-subtitle">选择{{ weekNum }}个固定服务周期</view>
+            <view class="popup-list flexbox wrap">
+                <view class="popup-list-item {{item.checked == true ? 'current' : ''}}" wx:for="{{ weeks }}" wx:key="index" bindtap="weekHandle" data-index="{{index}}">{{ item.week_name }}</view>
+            </view>
+        </view>
+        <view class="popup-btns">
+            <view class="popup-tips flexbox center middle">
+                <text wx:if="{{ week_name == '' }}">请选择{{ weekNum }}个服务周期</text>
+                <text wx:else>{{detailData.period_title}}，每次 {{week_name}} 上门服务</text>
+            </view>
+            <view class="wx-btns border-top">
+                <view class="btn {{weekList.length == weekNum ? 'btn-primary' : 'disabled'}}" bindtap="weekSubmit">确定</view>
+            </view>
+        </view>
+    </view>
+</van-popup>
+<van-dialog id="van-dialog" confirm-button-color="#ff8666" />

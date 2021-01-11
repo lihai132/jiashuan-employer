@@ -1,0 +1,260 @@
+page {
+    background-color: #f6f6f6;
+}
+button {
+    width: 100% !important;
+}
+.no-data {
+    margin-top: 252rpx;
+}
+.no-pic image {
+    width: 360rpx;
+    height: 208rpx;
+}
+.no-text {
+    margin-top: 44rpx;
+    font-size: 29rpx;
+    color: #666;
+}
+.no-data .btn {
+    margin-top: 24rpx;
+    font-size: 24rpx;
+    width: 25% !important;
+    border-radius: 32rpx;
+    color: #1D1D1D;
+}
+.no-data .btn.btn-primary {
+    color: #fff;
+    background: linear-gradient(90deg, #FFBB9F 0%, #FF8666 100%);
+}
+.isEnd {
+    font-size: 26rpx;
+    color: #999;
+    text-align: center;
+    padding: 30rpx 0;
+}
+
+.order-item {
+    background-color: #fff;
+    margin: 30rpx 30rpx 0 30rpx;
+    border-radius: 16rpx;
+}
+.order-item:last-child {
+    margin-bottom: 30rpx;
+}
+.item-card {
+    padding: 0 30rpx;
+}
+.item-top {
+    line-height: 98rpx;
+    border-bottom: 2rpx solid #f6f6f6;
+    font-size: 29rpx;
+    color: #1d1d1d;
+}
+.item-top .order-status {
+    color: #9b9b9b;
+}
+.item-content {
+    padding-top: 20rpx;
+    padding-bottom: 36rpx;
+    border-bottom: 2rpx solid #f6f6f6;
+}
+.item-content .order-pic image {
+    width: 160rpx;
+    height: 160rpx;
+    min-width: 160rpx;
+    margin-right: 20rpx;
+    background-color: #f6f6f6;
+}
+.item-content .order-content .order-title {
+    width: 454rpx;
+    color: #1a1a1a;
+    font-size: 32rpx;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.item-content .order-content .order-count {
+    margin-left: 20rpx;
+    font-size: 29rpx;
+    color: #FF8666;
+    font-weight: 500;
+}
+.item-content .order-content .order-time {
+    font-size: 29rpx;
+    color: #999;
+    margin-top: 4rpx;
+    margin-bottom: 18rpx;
+}
+.item-content .order-content .order-pay {
+    color: #1D1D1D;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    margin-top: 62rpx;
+}
+.item-content .order-content .subtotal {
+    color: #FF2556;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.item-content .order-content .subtotal text {
+    font-size: 24rpx;
+}
+.item-content .order-tips {
+    width: 100%;
+    margin-top: 36rpx;
+    border-radius: 8rpx;
+    background-color: #F5F6FA;
+    padding: 16rpx 20rpx;
+    font-size: 26rpx;
+    color: #666;
+}
+.item-bottom .btn {
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+    margin-bottom: 40rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    padding: 12rpx 26rpx;
+    border-radius: 32rpx;
+    color: #1D1D1D;
+}
+.item-bottom .btn:first-child {
+    margin-left: 0;
+}
+.item-bottom .btn.btn-primary {
+    color: #FF8666;
+    border: 2rpx solid #FF8666;
+}
+.item-bottom .btn.btn-primary-dark {
+    color: #fff;
+    border: 2px solid #ff8666;
+    background-color: #ff8666;
+}
+.item-bottom .btn.btn-not-allow {
+    color: #fff;
+    background-color: #FF8666;
+    border: 2rpx solid #FF8666;
+    opacity: 0.5;
+}
+.item-bottom .btn.btn-share {
+    color: #fff;
+    background: linear-gradient(136deg, #F9B079 0%, #DC0608 100%);
+}
+.item-bottom .btn .icon {
+    width: 28rpx;
+    min-width: 28rpx;
+    height: 28rpx;
+    margin-right: 8rpx;
+}
+
+/* 满单提示 */
+.wx-mask {
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background: rgba(29, 29, 29, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.confirm-box, .confirm-box .share {
+	position: relative;
+}
+.confirm-box .wrapper {
+	background: #fff;
+	border-radius: 16rpx;
+	padding: 64rpx 48rpx 50rpx;
+}
+.confirm-box .wrapper .title {
+	color: #333333;
+	font-size: 34rpx;
+	line-height: 48rpx;
+	font-weight: bold;
+}
+.confirm-box .wrapper .content {
+	color: #666666;
+	font-size: 30rpx;
+	line-height: 42rpx;
+	text-align: center;
+	margin-top: 32rpx;
+	margin-bottom: 64rpx;
+}
+.confirm-box .wrapper .btn {
+	font-size: 32rpx;
+	line-height: 44rpx;
+	padding: 14rpx 50rpx;
+	border: 2rpx solid #ff8666;
+	border-radius: 40rpx;
+}
+.confirm-box .wrapper .btn-primary-dark {
+	color: #ff8666;
+}
+.confirm-box .wrapper .btn-primary-light {
+	color: #fff;
+	background-color: #FF8666;
+}
+.guide-info {
+    position: absolute;
+    bottom: 248rpx;
+    width: 130rpx;
+    height: 40rpx;
+}
+.long-info {
+    position: absolute;
+    bottom: 108rpx;
+    width: 310rpx;
+    height: 106rpx;
+}
+.rules-info {
+    position: absolute;
+    bottom: 204rpx;
+    width: 130rpx;
+    height: 40rpx;
+}
+.share-info {
+    position: absolute;
+    bottom: 63rpx;
+    width: 500rpx;
+    height: 90rpx;
+}
+.app-mask {
+    z-index: 9999;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.icon-up {
+    width: 34rpx;
+    height: 34rpx;
+    position: fixed;
+    top: 0;
+    right: 128rpx;
+}
+.msg-box {
+    margin-top: 30rpx;
+    margin-right: 16rpx;
+    border-radius: 8rpx;
+    width: 344rpx;
+    height: 152rpx;
+    background: #fff;
+    color: #1A1A1A;
+    font-size: 28rpx;
+}
+.msg-box .circle {
+    width: 6rpx;
+    height: 6rpx;
+    border-radius: 50%;
+    background: #000;
+    margin: 0 6rpx;
+}
+.msg-box .circle:nth-child(2) {
+    width: 12rpx;
+    height: 12rpx;
+    margin-left: 0;
+    margin-right: 0;
+}

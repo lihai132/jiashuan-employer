@@ -1,0 +1,109 @@
+<view class="app-body">
+    <view class="checkout-block">
+        <!-- 商品信息 -->
+        <view class="product-wrapper bg-while mb20">
+            <view class="product-title">商品信息</view>
+            <view class="product-info flexbox">
+                <view class="product-left">
+                    <image src="{{detailData.logo}}" mode="scaleToFill"></image>
+                </view>
+                <view class="product-right flex1">
+                    <view class="title">{{detailData.title}}<text wx:if="{{detailData.goods_type == 1}}">({{detailData.num}}次)</text></view>
+                    <view class="flexbox bottom justify" style="height: 116rpx">
+                        <view class="price"><text class="sign">¥</text>{{ price }}</view>
+                        <view class="quantity">x1</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <block wx:if="{{ detailData.goods_type == 1 }}">
+            <!-- 套餐 -->
+            <view class="service-container bg-while mb20">
+                <view class="timer-info">
+                    <view class="title">选择频次</view>
+                    <view class="timer-list flexbox wrap">
+                        <view class="item {{active == index ? 'on' : ''}}" wx:for="{{ detailData.period_list }}" wx:key="index" bindtap="clickHandle" data-type="1" data-index="{{index}}">{{ item.title }}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 服务时间段 -->
+            <view class="service-container bg-while mb20">
+                <view class="timer-info">
+                    <view class="title">选择服务时间段</view>
+                    <view class="timer-list flexbox wrap">
+                        <view class="item {{current == index ? 'on' : ''}}" wx:for="{{ detailData.time_price }}" wx:key="index" bindtap="clickHandle" data-type="2" data-index="{{index}}">{{ item.part_time }}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <!-- 服务详情 -->
+        <view class="reserve-wrapper bg-while" bindtap="toPage">
+            <view class="reserve-container">
+                <block wx:if="{{reserveData == ''}}">
+                    <view class="title-info flexbox justify middle">
+                        <view class="title">填写地址及服务详情</view>
+                        <image src="../../images/order/icon-arrow-right.png" />
+                    </view>
+                    <view class="reserve-info">
+                        <text class="no-data-text">预约成功后，如需调整日期，可联系站长或客服</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="title-info flexbox justify middle">
+                        <view class="title">服务详情</view>
+                        <image src="../../images/order/icon-calendar.png" catchtap="toPage" />
+                    </view>
+                    <view class="reserve-info">
+                        <view class="items flexbox" wx:if="{{ detailData.goods_type == 0 }}">
+                            <view class="label">服务时间</view>
+                            <view class="info flex1">
+                                <view class="info-items" wx:for="{{ serviceDateList }}" wx:key="index">{{ item }}</view>
+                            </view>
+                        </view>
+                        <view class="items flexbox" wx:if="{{ detailData.goods_type == 1 }}">
+                            <view class="label">周期/首单</view>
+                            <view class="info flex1">{{ detailData.week_name }} / {{ reserveData.service_date }}</view>
+                        </view>
+                        <view class="items flexbox">
+                            <view class="label">服务地址</view>
+                            <view class="info flex1">
+                                <view class="info-items">{{ addressName }}</view>
+                                <view class="info-items">{{ address }}</view>
+                            </view>
+                        </view>
+                        <view class="items flexbox">
+                            <view class="label">联系人</view>
+                            <view class="info flex1">{{reserveData.name}} {{reserveData.phone}}</view>
+                        </view>
+                        <view class="items flexbox">
+                            <view class="label">户型/面积</view>
+                            <view class="info flex1">{{reserveData.house}}/{{reserveData.family_size}}</view>
+                        </view>
+                        <view class="items flexbox" wx:if="{{reserveData.remark}}">
+                            <view class="label">叮嘱/备注</view>
+                            <view class="info flex1">{{reserveData.remark}}</view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view style="margin-top: 50rpx; height: 110rpx"></view>
+    </view>
+    <view class="checkout-btn">
+        <view class="btn-container flexbox justify middle">
+            <view class="flexbox left middle">
+                <text class="total-text">合计：</text>
+                <text class="total-price">{{ detailData.price }}</text>
+            </view>
+            <view class="button-submit {{btnStatus == true ? '' : 'disabled'}}" bindtap="payHandle">提交订单</view>
+        </view>
+    </view>
+</view>
+<view class="fixed-wrap" style="top: {{buttonTop}}px; left: {{buttonLeft}}px">
+    <button id="contact" open-type="contact" catchtouchmove="buttonMove" bindtouchstart="buttonStart" bindtouchend="buttonEnd" style="width:140rpx; height:140rpx;">
+        <image class="chat-img" src="../../images/home/chat-img.png"></image>
+    </button>
+</view>
+
+<van-dialog id="van-dialog" confirm-button-color="#ff8666" />
+<van-notify id="van-notify" />

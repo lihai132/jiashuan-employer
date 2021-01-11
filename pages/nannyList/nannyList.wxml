@@ -1,0 +1,40 @@
+<view class="monthly">
+	<scroll-view class="monthly-nav" style="width: {{bgWidth}}px; height: {{bgHeight}}px">
+		<image class="bg" src="../../images/order/monthly-src.png"></image>
+		<view class="month-box">
+			<view class="monthly-nav-title">
+				<view class="monthly-nav-title-text1">请选择！</view>
+				<view class="monthly-nav-title-text2">已试用过的家政师</view>
+            </view>
+            <view class="nanny-list">
+                <view class="item flexbox justify" wx:for="{{ nannyList }}" wx:key="index" bindtap="selectNanny" data-index="{{index}}" data-nanny_id="{{item.nanny_id}}" data-status="{{item.status}}">
+                    <view class="nanny-pic" data-nanny_id="{{item.nanny_id}}">
+                        <image src="{{item.headimgurl}}"></image>
+                        <view class="bottom-info" wx:if="{{item.status == 0}}">已约满</view>
+                    </view>
+                    <view class="nanny-info">
+                        <view class="nanny-name {{item.status == 0 ? 'disabled' : ''}}">{{item.name}}</view>
+                        <view class="nanny-check-box flexbox right">
+                            <van-icon style="margin-top: 40rpx" name="checked" size="20px" color="#ff8666" wx:if="{{index == actice}}" />
+                            <view class="nanny-check" wx:else></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+		</view>
+	</scroll-view>
+	<view class="nanny-footer">
+        <view class="nanny-tips">注：以上家政师不满意，可前往首页下单</view>
+		<block wx:if="{{nanny_id == ''}}">
+            <van-button round
+			custom-style="width: 670rpx;height: 92rpx;background: #FF8666;margin-top:10rpx;font-size:32rpx;color:#fff;"
+			bindtap="nextHandle" disabled>下一步</van-button>
+        </block>
+        <block wx:else>
+            <van-button round
+			custom-style="width: 670rpx;height: 92rpx;background: #FF8666;margin-top:10rpx;font-size:32rpx;color:#fff;"
+			bindtap="nextHandle">下一步</van-button>
+        </block>
+	</view>
+</view>
+<van-notify id="van-notify" />

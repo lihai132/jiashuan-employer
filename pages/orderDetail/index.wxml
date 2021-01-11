@@ -1,0 +1,310 @@
+<block wx:if="{{ isLoading }}">
+    <view class="flexbox middle center" style="height: {{ wHeight }}px">
+        <van-loading color="#ff8666" size="36px" vertical>加载中...</van-loading>
+    </view>
+</block>
+<view class="wx-body" wx:else>
+    <!-- 订单进度 -->
+    <view class="wx-progress" wx:if="{{serviceList.length != 1 && order_type == 0}}">
+        <image class="wx-progress-bg" src="../../images/order/progress-bg.png"></image>
+        <view class="wx-progress-wrapper">
+            <view class="wx-progress-container">
+                <view class="wx-progress-outer">
+                    <view class="wx-progress-inner flexbox left">
+                        <block wx:if="{{ serviceList.length == 3 }}">
+                            <view wx:for="{{serviceList}}" wx:key="index" class="item {{current_progress == index ? 'start' : ''}} {{item.status == 2 ? 'finished end' : ''}}" data-index="{{index}}" bindtap="statusHandle">
+                                <view class="wx-tag">{{item.status_text}}</view>
+                                <view class="wx-number">{{index + 1}}</view>
+                                <image class="wx-check" src="../../images/order/icon-check.png"></image>
+                            </view>
+                        </block>
+                        <block wx:if="{{ serviceList.length == 2 }}">
+                            <view wx:for="{{serviceList}}" wx:key="index"
+                                class="item item2 {{current_progress == index ? 'start' : ''}} {{item.status == 2 ? 'finished end' : ''}}"
+                                data-index="{{index}}" data-service_date="{{item.service_date}}"
+                                data-part_time="{{item.part_time}}" data-nanny_info="{{item.nanny_info}}"
+                                bindtap="statusHandle">
+                                <view class="wx-tag">{{item.status_text}}</view>
+                                <view class="wx-number">{{index + 1}}</view>
+                                <image class="wx-check" src="../../images/order/icon-check.png"></image>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 服务情况 -->
+    <view class="wx-long wx-border" wx:if="{{order_type == 1}}">
+        <view class="wx-long-container">
+            <view class="wx-long-bg">
+                <image src="../../images/order/service-bg.png"></image>
+            </view>
+            <view class="wx-long-info">
+                <view class="wx-long-wrapper">
+                    <view class="subtitle flexbox center middle">订单进度</view>
+                    <view class="info flexbox middle">
+                        <view class="info-item">
+                            <view class="order_num">{{ waitNum }}</view>
+                            <view class="order_status">待进行</view>
+                        </view>
+                        <view class="info-item">
+                            <view class="order_num">{{ end_count }}</view>
+                            <view class="order_status">已完成</view>
+                        </view>
+                        <view class="info-item">
+                            <view class="order_num">{{ count }}</view>
+                            <view class="order_status">总次数</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 家政师信息 -->
+    <view class="wx-border" wx:if="{{serviceList.length == 1}}"></view>
+    <view class="wx-housekeeper wx-border" wx:if="{{ serviceInfo.nanny_info }}">
+        <view class="wx-container" data-nanny_id="{{ serviceInfo.nanny_info.nanny_id }}">
+            <view class="wx-housekeeper-title flexbox middle justify">
+                <view class="title">家政师</view>
+                <image src="../../images/order/icon-recommend.png" catchtap="createPoster" data-nanny_id="{{ serviceInfo.nanny_info.nanny_id }}"></image>
+            </view>
+            <view class="wx-housekeeper-content flexbox left">
+                <view class="wx-housekeeper-pic">
+                    <image src="{{ serviceInfo.nanny_info.headimgurl }}"></image>
+                    <view class="houseKeeper-tips" wx:if="{{serviceInfo.change_nanny_status == 3}}">代班</view>
+                </view>
+                <view class="wx-housekeeper-info">
+                    <view class="wx-info flexbox justify">
+                        <view class="wx-info-left">
+                            <view class="wx-info-name">{{ serviceInfo.nanny_info.name }}</view>
+                            <view class="wx-info-phone">{{ serviceInfo.nanny_info.phone }}</view>
+                        </view>
+                        <view class="wx-info-right flexbox left">
+                            <image wx:if="{{serviceInfo.nanny_info.is_star}}" src="../../images/order/likes.png"
+                                catchtap="starNanny" data-service_id="{{serviceInfo.service_id}}"
+                                data-nanny_id="{{ serviceInfo.nanny_info.nanny_id }}"></image>
+                            <image wx:else src="../../images/order/unlikes.png" catchtap="starNanny"
+                                data-service_id="{{serviceInfo.service_id}}"
+                                data-nanny_id="{{ serviceInfo.nanny_info.nanny_id }}"></image>
+                            <image src="../../images/order/phone.png" catchtap="telHandle"
+                                data-phone="{{ serviceInfo.nanny_info.phone }}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="wx-housekeeper-btn flexbox right">
+                <view class="btn-contact" wx:if="{{refundStatus == 0 && order_type == 1}}" catchtap="nannyOpen">更换家政师</view>
+                <view class="btn-contact" catchtap="telHandle" data-phone="{{ serviceInfo.nanny_info.station_phone }}">
+                    联系站长</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 服务时间 -->
+    <view class="wx-time wx-border wx-bg-while" wx:if="{{pay_status != 0}}">
+        <view class="wx-container">
+            <view class="flexbox middle justify">
+                <view class="wx-title">服务时间</view>
+                <view class="flexbox" bindtap="toPage" data-type="picker" wx:if="{{ refundStatus == 0 && serviceInfo.change_date_status == -1}}">
+                    <text class="text">更改</text>
+                    <van-icon name="arrow" color="#1D1D1D" size="12px" />
+                </view>
+                <view class="flexbox" wx:if="{{serviceInfo.change_date_status == 0}}">
+                    <text class="text">待确认</text>
+                </view>
+                <view class="flexbox" wx:if="{{serviceInfo.change_date_status == 1}}">
+                    <text class="text">未通过</text>
+                </view>
+                <view class="flexbox" wx:if="{{serviceInfo.change_date_status == 2}}">
+                    <text class="text">已取消</text>
+                </view>
+                <view class="flexbox" wx:if="{{serviceInfo.change_date_status == 3}}">
+                    <text class="text" style="color: #ff8666">已更新</text>
+                </view>
+            </view>
+            <view class="wx-time-info">
+                <view class="items flexbox middle">
+                    <view class="label" wx:if="{{order_type == 0}}">预定上门日期为：</view>
+                    <view class="label" wx:else>下次上门日期为：</view>
+                    <view class="timer {{serviceInfo.change_date_status == 3 ? 'on' : ''}}">{{serviceInfo.nanny_info.date}}</view>
+                </view>
+                <view class="items flexbox middle">
+                    <view class="label" wx:if="{{order_type == 0}}">预定上门时间为：</view>
+                    <view class="label" wx:else>下次上门时间为：</view>
+                    <view class="timer {{serviceInfo.change_date_status == 3 ? 'on' : ''}}">{{serviceInfo.nanny_info.time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 我的预约 -->
+    <view class="wx-service wx-border">
+        <view class="wx-container">
+            <view class="wx-service-wrapper">
+                <view class="wx-reserve-title flexbox middle justify">
+                    <view class="title flexbox justify middle">
+                        <view>预约详情</view>
+                        <!-- <view class="abnormal-text" bindtap="toPage" data-type="abnormal">异常订单记录</view> -->
+                    </view>
+                </view>
+                <view class="wx-service-content">
+                    <view class="wx-service-info">
+                        <!-- <view class="wx-service-item flexbox left" wx:if="{{order_type == 0}}">
+                            <view class="label">服务时间</view>
+                            <view class="input flex1">{{serviceInfo.service_date}} / {{serviceInfo.part_time}}</view>
+                        </view> -->
+                        <view class="wx-service-item flexbox left" wx:if="{{order_type == 1}}">
+                            <view class="label">服务周期</view>
+                            <view class="input flex1">{{serviceInfo.service_period}}</view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">服务地址</view>
+                            <view class="input flex1">
+                                <view>{{serviceInfo.addressName}}</view>
+                                <view>{{serviceInfo.addressText}}</view>
+                            </view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">联系人</view>
+                            <view class="input flex1">{{serviceInfo.name}} {{serviceInfo.phone}}</view>
+                        </view>
+                        <view class="wx-service-item flexbox left">
+                            <view class="label">户型/面积</view>
+                            <view class="input flex1">{{serviceInfo.house}} / {{serviceInfo.family_size}}</view>
+                        </view>
+                        <view class="wx-service-item flexbox left" wx:if="{{remarkShow}}">
+                            <view class="label">叮嘱/备注</view>
+                            <view class="input flex1">{{serviceInfo.remark == null ? '' : serviceInfo.remark}}</view>
+                        </view>
+                    </view>
+                    <view class="btn-more flexbox center middle" bindtap="moreHandle" wx:if="{{order_type == 0}}">
+                        查看更多
+                        <view class="icon-arror flexbox center middle {{remarkShow == true ? 'on' : ''}}">
+                            <image src="../../images/order/icon-arror-bottom.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 订单信息 -->
+    <view class="wx-orderMsg">
+        <view class="wx-container">
+            <view class="flexbox justify middle">
+                <view class="wx-title">订单信息</view>
+                <view class="wx-refund" bindtap="refundOpen" wx:if="{{ refundBtn }}">{{ refundStatusText }}</view>
+            </view>
+            <view class="wx-orderMsg-content">
+                <view class="wx-orderMsg-item flexbox left middle">
+                    <view class="wx-label">订单编号</view>
+                    <view class="wx-txt">{{order_id}}</view>
+                </view>
+                <view class="wx-orderMsg-item flexbox left middle">
+                    <view class="wx-label">支付时间</view>
+                    <view class="wx-txt">{{pay_time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 生成海报 -->
+    <view class='imagePathBox' hidden="{{maskHidden == false}}">
+        <van-icon class="icon-close" name="close" color="#fff" size="33px" bindtap="closePoster" />
+        <image src="{{imagePath}}" class='shengcheng'></image>
+        <button class='savePoster' bindtap='savePoster'>
+            <view class="flexbox middle center">
+                <image class="icon-download" src="../../images/order/download.png" mode="widthFix"></image>
+                <text>保存海报到相册</text>
+            </view>
+        </button>
+    </view>
+    <view hidden="{{maskHidden == false}}" class="mask"></view>
+    <view class="canvas-box">
+        <canvas style="width: 375px;height: 667px;position:fixed;top:9999px" canvas-id="canvas" />
+    </view>
+</view>
+
+<!-- 调查问卷 -->
+<van-action-sheet show="{{ questionShow }}" title="请您根据本次服务回答以下问题" bind:close="onClose">
+    <view class="question-container">
+        <view class="question-item flexbox justify" wx:for="{{questionList}}" wx:key="index">
+            <view class="question-label">{{item.title}}</view>
+            <view class="question-select flexbox right">
+                <view class="select-items {{item.checked == 'true' && item.checked != '' ? 'on' : ''}}"
+                    bindtap="questionSelect" data-index="{{index}}" data-select="true">是</view>
+                <view class="select-items {{item.checked == 'false' && item.checked != '' ? 'on' : ''}}"
+                    bindtap="questionSelect" data-index="{{index}}" data-select="false">否</view>
+            </view>
+        </view>
+        <view class="wx-btn btn-primary" bindtap="submitQuestion">确认提交</view>
+    </view>
+</van-action-sheet>
+
+<!-- 退款 -->
+<van-popup show="{{ refundShow }}" closeable round close-on-click-overlay="false" position="bottom" bind:close="refundClose">
+    <view class="popup-wrapper">
+        <view class="popup-container">
+            <view class="popup-title" style="width:100%;">退款需要3～10个工作日人工审核</view>
+            <view class="popup-box flexbox wrap">
+                <view class="item {{refundIndex == index ? 'on' : ''}}" wx:for="{{ refundList }}" wx:key="index" bindtap="refundSelect" data-index="{{index}}">{{item}}</view>
+            </view>
+            <view class="popup-textarea">
+                <view class="label">退款原因</view>
+                <view class="textarea">
+                    <van-field
+                        value="{{ refundCause }}"
+                        type="textarea"
+                        placeholder="请说明退款原因"
+                        autosize
+                        maxlength="200"
+                        bind:input="refundCauseInput"
+                        border="{{ false }}"
+                    />
+                    <view class="fixed-text">{{refundNum}}/200</view>
+                </view>
+            </view>
+        </view>
+        <view class="popup-btn flexbox middle center">
+            <view class="btn primary" catchtap="refundSubmit">确认提交</view>
+        </view>
+    </view>
+</van-popup>
+
+<!-- 更改家政师 -->
+<van-popup show="{{ nannyChangeShow }}" closeable round close-on-click-overlay="false" position="bottom" bind:close="nannyClose">
+    <view class="popup-wrapper">
+        <view class="popup-container">
+            <view class="popup-title">请您对家政师的服务进行评价并告知更换原因</view>
+            <view class="popup-list">
+                <view class="popup-item flexbox middle justify" wx:for="{{changeNannyForm}}" wx:key="index" wx:for-index="index">
+                    <view class="label">{{ item.label }}</view>
+                    <view class="items {{itemName.checked == true ? 'on': ''}}" wx:for="{{ item.list }}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName" catchtap="changePopup" data-index="{{index}}" data-idx="{{idx}}">{{itemName.name}}</view>
+                </view>
+            </view>
+            <view class="popup-textarea">
+                <view class="label">更换原因</view>
+                <view class="textarea">
+                    <van-field
+                        value="{{ cause }}"
+                        type="textarea"
+                        placeholder="告知我们更换原因，以便我们提供更好的服务"
+                        autosize
+                        maxlength="200"
+                        bind:input="causeInput"
+                        border="{{ false }}"
+                    />
+                </view>
+            </view>
+        </view>
+        <view class="popup-btn flexbox middle center">
+            <view class="btn primary" catchtap="changeNannySubmit">确认更换家政师</view>
+        </view>
+    </view>
+</van-popup>
+
+<van-dialog id="van-dialog" confirm-button-color="#333" cancel-button-color="#FF8666" />
+<van-notify id="van-notify" />

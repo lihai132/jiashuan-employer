@@ -1,0 +1,42 @@
+<view class="nannyDetails">
+    <view class="nannyDetails-top">
+        <image class="nannyDetails-top-src" src="../../images/order/bjt.png"></image>
+        <view class="nannyDetails-head">
+            <view class="nannyDetails-head-box">
+                <image class="nannyDetails-head-src" src="{{nannyDetails.headimgurl}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="nannyDetails-nav">
+        <view class="nannyDetails-nav-fabulous-nav">
+            <van-icon name="like" color="#ff8666" />
+            <view class="nannyDetails-nav-fabulous-nav-num" style="color: #ff8666;">{{nannyDetails.star}}</view>
+        </view>
+        <view class="information">
+            <view class="nannyDetails-nav-name">{{nannyDetails.name}}</view>
+            <view class="nannyDetails-nav-news">
+                <view class="nannyDetails-nav-time">
+                    <view class="nav-time-title">年龄:</view>
+                    <view class="nav-time-text">{{nannyDetails.age}}岁</view>
+                </view>
+                <view class="line"></view>
+                <view class="nannyDetails-nav-time">
+                    <view class="nav-time-title">籍贯:</view>
+                    <view class="nav-time-text">{{nannyDetails.native_place}}</view>
+                </view>
+                <view class="line"></view>
+                <view class="nannyDetails-nav-time">
+                    <view class="nav-time-title">民族:</view>
+                    <view class="nav-time-text">{{nannyDetails.nation}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="exhibition">
+            <view class="exhibition-nav-title">个人展示</view>
+            <view class="exhibition-nav-list">
+                <image class="exhibition-nav-list-item" src="{{item}}" wx:for="{{imgList}}" wx:key="index"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<van-notify id="van-notify" />

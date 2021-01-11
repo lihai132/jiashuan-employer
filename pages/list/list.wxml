@@ -1,0 +1,50 @@
+<view class="app-body">
+    <block wx:if="{{ isLoading }}">
+        <view class="flexbox middle center" style="height: {{height}}px">
+            <van-loading color="#ff8666" size="36px" vertical>加载中...</van-loading>
+        </view>
+    </block>
+    <view class="list-box" wx:else>
+        <view class="list-box-item" wx:for="{{partList}}" wx:key="index">
+            <view class="items-wrapper">
+                <view class="items flexbox" wx:for="{{item.list}}" wx:key="index" wx:for-item="items" wx:if="{{items.goods_type == 1}}" bindtap="toPage" data-goods_id="{{items.goods_id}}">
+                    <view class="items-pic">
+                        <image src="{{items.images}}" lazy-load="true"></image>
+                    </view>
+                    <view class="items-info flex1">
+                        <view style="height: 160rpx">
+                            <view class="title flexbox middle justify">
+                                <view class="flexbox middle">
+                                    <text class="tag" wx:if="{{ items.discount_msg != '' }}">{{ items.discount_msg }}</text>
+                                    {{ items.subtitle1 }}
+                                </view>
+                                <view wx:if="{{ items.countdown != 0 }}" class="time-warpper flexbox middle">
+                                    <text class="time-count">{{items.formatTime[0]}}</text>:
+                                    <text class="time-count">{{items.formatTime[1]}}</text>:
+                                    <text class="time-count">{{items.formatTime[2]}}</text>:
+                                    <text class="time-count">{{items.formatTime[3]}}</text>
+                                </view>
+                            </view>
+                            <view class="subtitle ellipsis" wx:if="{{ items.subtitle2 }}">{{ items.subtitle2 }}</view>
+                            <view class="subtitle ellipsis active" wx:if="{{ items.subtitle3 }}">{{ items.subtitle3 }}</view>
+                        </view>
+                        <view class="info flexbox bottom justify">
+                            <view class="flexbox bottom ellipsis">
+                                <view class="price">
+                                    <text class="t1">¥</text>
+                                    <text>{{ items.price }}</text>
+                                    <text class="t1">{{ items.unit }}</text>
+                                </view>
+                                <view class="original-price" wx:if="{{ items.price != items.market_price }}">
+                                    <text>¥{{ items.market_price }}{{ items.unit }}</text>
+                                </view>
+                            </view>
+                            <view class="button-buy">立即抢购</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<van-notify id="van-notify" />

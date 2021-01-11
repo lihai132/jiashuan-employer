@@ -1,0 +1,20 @@
+<view class="wx-container">
+    <view class="wx-logo flexbox center">
+        <image src="../../images/mine/avatar-default.png"></image>
+    </view>
+    <view class="flexbox center">
+        <view class="wx-title">
+            <view class="wx-strong">家舒安家政</view>
+            <view class="wx-sub">酒店级品质</view>
+        </view>
+    </view>
+    <view class="wx-text">
+        <view class="flexbox center">
+            <view>登录即视为同意</view>
+            <view class="wx-txt" bindtap="toPage">《隐私协议》</view>
+        </view>
+    </view>
+    <view class="wx-authorize flexbox center">
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="height:92rpx;line-height:60rpx;">微信登录</button>
+    </view>
+</view>

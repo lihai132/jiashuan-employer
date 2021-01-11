@@ -1,0 +1,8 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="app-body">
+    <view class="rule-box">
+        <view class="rule-info">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+        </view>
+    </view>
+</view>

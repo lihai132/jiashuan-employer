@@ -1,0 +1,87 @@
+.nodata image {
+    width: 360rpx;
+    height: 208rpx;
+    margin-top: 252rpx;
+    margin-bottom: 44rpx;
+}
+.nodata .nodata-text {
+    color: #666;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+.nanny-list .item {
+    padding: 30rpx 30rpx 0 30rpx;
+}
+.nanny-list .item:last-child {
+    padding-bottom: 30rpx;
+}
+.nanny-list .item .radio-box {
+    height: 210rpx;
+    width: 44rpx;
+}
+.nanny-list .item .radio {
+    width: 34rpx;
+    min-width: 34rpx;
+    height: 34rpx;
+    border-radius: 50%;
+    border: 2rpx solid #999;
+}
+.nanny-list .item .nanny-img image {
+    width: 210rpx;
+    min-width: 210rpx;
+    height: 210rpx;
+    border-radius: 12rpx;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    background: #e6e6e6;
+}
+.nanny-list .item .nanny-info {
+    height: 210rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 2rpx solid #f6f6f6;
+}
+.nanny-list .item:last-child .nanny-info {
+    border-bottom: none;
+}
+.nanny-info .items {
+    margin-top: 10rpx;
+    margin-bottom: 6rpx;
+    color: #999;
+    font-size: 26rpx;
+    line-height: 36rpx;
+}
+.nanny-info .items.name {
+    margin-bottom: 8rpx;
+    color: #1D1D1D;
+    font-size: 30rpx;
+    line-height: 42rpx;
+}
+.btn-primary {
+    font-size: 24rpx;
+    line-height: 34rpx;
+    background-color: #ff8666;
+    color: #fff;
+    padding: 6rpx 16rpx;
+    border-radius: 24rpx;
+}
+.btn-group {
+    width: 100%;
+    height: 112rpx;
+    border-top: 1px solid #e6e6e6;
+}
+.btn-group .btn {
+    width: 670rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    font-size: 34rpx;
+    text-align: center;
+    border-radius: 42rpx;
+}
+.btn-group .btn-disabled {
+    background: rgba(255, 134, 102, 0.5);
+    color: #fff;
+}
+.btn-group .btn-primary {
+    background: #ff8666;
+    color: #fff;
+}

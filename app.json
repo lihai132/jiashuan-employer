@@ -1,0 +1,85 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/agreementUser/agreementUser",
+        "pages/authorize/authorize",
+        "pages/address/address",
+        "pages/checkout/chekcout",
+        "pages/details/details",
+        "pages/feedback/feedback",
+        "pages/join/join",
+        "pages/mine/mine",
+        "pages/order/order",
+        "pages/orderDetail/index",
+        "pages/service/service",
+        "pages/agreementPrivacy/agreementPrivacy",
+        "pages/housekeeper/housekeeper",
+        "pages/calendar/calendar",
+        "pages/nannyDetail/nannyDetail",
+        "pages/nannyList/nannyList",
+        "pages/404/404",
+        "pages/abnormal/abnormal",
+        "pages/list/list",
+        "pages/nannySelect/nannySelect",
+        "pages/rules/rules",
+        "pages/active/active"
+    ],
+    "subpackages": [],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "家舒安",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#FF8666",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/tabBar/icon-home.png",
+                "selectedIconPath": "images/tabBar/icon-home-selected.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "订单",
+                "iconPath": "images/tabBar/icon-order.png",
+                "selectedIconPath": "images/tabBar/icon-order-selected.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的",
+                "iconPath": "images/tabBar/icon-my.png",
+                "selectedIconPath": "images/tabBar/icon-my-selected.png"
+            }
+        ]
+    },
+    "usingComponents": {
+        "van-icon": "@vant/weapp/icon/index",
+        "van-notify": "@vant/weapp/notify/index",
+        "van-button": "@vant/weapp/button/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "van-dialog": "@vant/weapp/dialog/index"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "获取您的当前位置"
+        }
+    },
+    "plugins": {
+        "chooseLocation": {
+            "version": "1.0.5",
+            "provider": "wx76a9a06e5b4e693e"
+        }
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": false
+}

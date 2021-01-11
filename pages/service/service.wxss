@@ -1,0 +1,177 @@
+.wx-form {
+    padding: 0 30rpx;
+}
+.wx-form .form-item {
+    margin-top: 58rpx;
+}
+.wx-label .label {
+    color: #1A1A1A;
+    font-size: 34rpx;
+    font-weight: bold;
+}
+.wx-label .star {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 16rpx;
+}
+.wx-input {
+    min-height: 80rpx;
+    border-bottom: 2rpx solid #E6E6E6;
+}
+.wx-input .wx-input-inner {
+    width: 100%;
+    font-size: 28rpx;
+}
+.wx-input .wx-icon {
+    width: 28rpx;
+    min-width: 28rpx;
+    height: 28rpx;
+    margin-left: 10rpx;
+}
+.wx-selectBox {
+    margin-bottom: 60rpx;
+}
+.wx-selectBox .wx-item {
+    width: 210rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    color: #51575D;
+    text-align: center;
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+    background-color: #F2F2F4;
+    border-radius: 12rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wx-selectBox .wx-item:nth-child(3n) {
+    margin-right: 0;
+}
+.wx-selectBox .wx-item.on {
+    background: linear-gradient(90deg, #FFBB9F 0%, #FF8666 100%);
+    color: #fff;
+}
+.wx-selectBox .wx-menu-item {
+    width: 150rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    color: #51575D;
+    text-align: center;
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+    background-color: #F2F2F4;
+    border-radius: 12rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wx-selectBox .wx-menu-item:nth-child(4n) {
+    margin-right: 0;
+}
+.wx-selectBox .wx-menu-item.on {
+    background: linear-gradient(90deg, #FFBB9F 0%, #FF8666 100%);
+    border-radius: 12rpx;
+    color: #fff;
+}
+.wx-textarea textarea {
+    margin-top: 30rpx;
+    padding: 30rpx 40rpx;
+    font-size: 28rpx;
+    background-color: #F2F2F4;
+    border-radius: 12rpx;
+    width: 100%;
+}
+.border-top {
+    border-top: 2rpx solid #f6f6f6;
+}
+.wx-btns {
+    width: 100%;
+    padding: 10rpx 0;
+}
+.address-name {
+    font-size: 28rpx;
+}
+.btn {
+    width: 670rpx;
+    height: 92rpx;
+    margin: 0 auto;
+    line-height: 92rpx;
+    text-align: center;
+    border-radius: 46rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+}
+.btn.btn-primary {
+    background-color: #FF8666;
+    color: #fff;
+}
+.btn.disabled {
+    background-color: #FF8666;
+    color: #fff;
+    opacity: 0.5;
+}
+/* popup 弹出层样式 服务周期 */
+.popup-container {
+    width: 750rpx;
+}
+.popup-title {
+    margin-top: 50rpx;
+    font-size: 36rpx;
+    color: #1A1A1A;
+}
+.popup-wrapper {
+    margin-top: 80rpx;
+    padding: 0 40rpx;
+    margin-bottom: 98rpx;
+}
+.popup-subtitle {
+    color: #1D1D1D;
+    font-size: 28rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+.popup-list-item {
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+    width: 308rpx;
+    height: 52rpx;
+    padding-left: 4rpx;
+    padding-right: 4rpx;
+    line-height: 52rpx;
+    color: #666;
+    font-size: 28rpx;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #f6f6f6;
+    border-radius: 28rpx;
+    border: 2rpx solid transparent;
+}
+.popup-list-item:nth-child(2n) {
+    margin-right: 0;
+}
+.popup-list-item.current {
+    border: 2rpx solid #FF8666;
+    background: rgba(255, 134, 102, 0.1);
+    color: #FF8666;
+}
+.popup-btns {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.popup-tips {
+    height: 60rpx;
+    background: #f8f8f8;
+    color: #ff8666;
+    font-size: 24rpx;
+    line-height: 34rpx;
+}
+
+.van-dialog__button button {
+	width: 100% !important;
+}

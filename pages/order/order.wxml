@@ -1,0 +1,103 @@
+<view class="order-container">
+    <block wx:if="{{ isLoading }}">
+        <view class="flexbox middle center" style="height: {{height}}px">
+            <van-loading color="#ff8666" size="36px" vertical>加载中...</van-loading>
+        </view>
+    </block>
+    <view class="order-box" wx:else>
+        <scroll-view scroll-y="true" style="height:{{height}}px" refresher-enabled="true" bindrefresherrefresh="onRefresh" refresher-triggered="{{isRefresh}}" bindscrolltolower='lower' class="order-list" wx:if="{{orderList.length != 0}}">
+            <view class="order-item" bindtap="toPage" wx:for="{{orderList}}" wx:key="index" data-type="0" data-order_id="{{item.order_id}}">
+                <view class="item-card">
+                    <view class="item-top flexbox justify">
+                        <view class="order-time">下单时间：{{item.create_time}}</view>
+                        <view class="order-status">{{item.order_status}}</view>
+                    </view>
+                    <view class="item-content flexbox wrap">
+                        <view class="flexbox left">
+                            <view class="order-pic">
+                                <image src="{{item.logo}}"></image>
+                            </view>
+                            <view class="order-content">
+                                <view class="order-title flexbox left middle">
+                                    <block>{{item.subtitle}}</block>
+                                    <view class="order-count">({{item.progress_str}})</view>
+                                </view>
+                                <view class="order-pay flexbox left">
+                                    实付：<view class="subtotal"><text>¥</text>{{item.price}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="order-tips">{{item.tips}}</view>
+                    </view>
+                    <view class="item-bottom flexbox right">
+                        <block wx:if="{{item.button_status == 0}}">
+                            <view class="btn btn-primary" catchtap="toPay" data-id="{{item.order_id}}">去支付</view>
+                        </block>
+                        <block wx:if="{{item.button_status == 2 || item.button_status == 3}}">
+                            <view class="btn btn-primary" catchtap="telHandle" data-phone="{{item.station_phone}}">联系站长</view>
+                        </block>
+                        <block wx:if="{{item.button_status == 4}}">
+                            <view class="btn btn-primary" catchtap="toPage" data-type="1" data-goods_id="{{item.goods_id}}">
+                                重新下单
+                            </view>
+                        </block>
+                        <block wx:if="{{item.button_status == 5}}">
+                            <view class="btn btn-primary" catchtap="toPage" data-type="1" data-goods_id="{{item.goods_id}}">
+                                再下一单
+                            </view>
+                        </block>
+                        <block wx:if="{{item.button_status == 1 || item.button_status == 5}}">
+                            <view class="btn btn-share flexbox middle" catchtap="shareOpen">
+                                <image class="icon" src="../../images/order/icon-gift.png"></image>
+                                <text>分享有礼</text>
+                            </view>
+                            <view class="btn btn-primary-dark" wx:if="{{item.order_type == 0}}" catchtap="toPage" data-type="2" data-order_id="{{item.order_id}}">转长期套餐</view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="isEnd" wx:if="{{isEnd == false}}">没有更多数据了~</view>
+        </scroll-view>
+        <view class="no-data" wx:else>
+            <view class="no-pic flexbox center">
+                <image src="../../images/order/no-order.png"></image>
+            </view>
+            <view class="no-text flexbox center">您还没有订单，快去首页逛逛吧！</view>
+            <button class="btn btn-primary" bindtap="toPage">去逛逛</button>
+        </view>
+    </view>
+    <van-dialog id="van-dialog" />
+    <van-notify id="van-notify" />
+</view>
+<!-- 满单提示 -->
+<view class="wx-mask flexbox center middle" wx:if="{{ orderTisShow }}">
+	<view class="confirm-box">
+        <view class="share flexbox middle center">
+            <image src="{{guideImg}}" mode="widthFix"></image>
+            <view class="guide-info" bindtap="toPage" data-type="3"></view>
+            <view class="long-info" bindtap="toPage" data-type="2"></view>
+        </view>
+		<van-icon class="flexbox center" size="35px" name="close" color="#fff" style="margin-top: 28rpx" bindtap="closeTips" data-index="1" />
+	</view>
+</view>
+<!-- 分享有礼 -->
+<view class="wx-mask flexbox center middle" wx:if="{{ shareShow }}">
+	<view class="confirm-box">
+        <view class="share flexbox middle center">
+            <image src="{{shareImg}}" mode="widthFix"></image>
+            <view class="rules-info" bindtap="toPage" data-type="3"></view>
+            <view class="share-info" bindtap="openShareLine"></view>
+        </view>
+		<van-icon class="flexbox center" size="35px" name="close" color="#fff" style="margin-top: 80rpx" bindtap="closeTips" data-index="2" />
+	</view>
+</view>
+<!-- 分享链接 -->
+<view class="app-mask flexbox right" wx:if="{{ shareLineShow }}" bindtap="closeTips" data-index="3">
+    <image class="icon-up" src="../../images/home/icon-up.png"></image>
+    <view class="msg-box flexbox middle center" catchtap="openShareLine">
+        <view>
+            <view class="flexbox middle">点击上方 <text class="circle" wx:for="{{[0, 1, 2]}}" wx:key="index"></text> 更多按钮</view>
+            <view>邀请好友来参加活动吧</view>
+        </view>
+    </view>
+</view>

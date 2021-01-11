@@ -1,0 +1,129 @@
+<block wx:if="{{ isLoading }}">
+    <view class="flexbox middle center" style="height: {{ maskH }}px">
+        <van-loading color="#ff8666" size="36px" vertical>加载中...</van-loading>
+    </view>
+</block>
+<view wx:else class="app-body">
+	<view class="app-header">
+		<block wx:if="{{ detailsData.min_discount_price != 0 }}">
+			<view class="active-wrapper">
+				<image class="active-banner" src="{{ detailsData.images }}" lazy-load="true"></image>
+				<view class="active-outter flexbox left bottom">
+					<view class="active-bg">
+						<image src="../../images/home/active-bg.png" lazy-load="true"></image>
+						<view class="absolute-box">
+							<view class="active-title">{{ detailsData.discount_msg }}</view>
+							<view class="active-price"><text class="symbol">¥</text>{{detailsData.min_price}}</view>
+						</view>
+					</view>
+					<view class="line-bg flexbox left middle">
+						<view class="item">
+							<view class="label">现价</view>
+							<view class="price2"><text class="symbol">¥</text>{{detailsData.min_price}}</view>
+						</view>=
+						<view class="item">
+							<view class="label">原价</view>
+							<view class="price2"><text class="symbol">¥</text>{{detailsData.min_market_price}}</view>
+						</view>-
+						<view class="item">
+							<view class="label">优惠</view>
+							<view class="price2"><text class="symbol">¥</text>{{detailsData.min_discount_price}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="active-subtitle flexbox justify">
+				<text>{{ detailsData.title }}</text>
+				<view wx:if="{{ detailsData.countdown != 0 }}" class="time-warpper flexbox middle">
+					<text class="time-count">{{detailsData.formatTime[0]}}</text>:
+					<text class="time-count">{{detailsData.formatTime[1]}}</text>:
+					<text class="time-count">{{detailsData.formatTime[2]}}</text>:
+					<text class="time-count">{{detailsData.formatTime[3]}}</text>
+				</view>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="default-wrapper">
+				<image class="default-banner" src="{{ detailsData.images }}" lazy-load="true"></image>
+				<view class="default-outter">
+					<!-- <view class="price">¥{{ detailsData.min_price }}<text wx:if="{{ detailsData.goods_type == 1 }}">起</text></view> -->
+					<view class="subtitle">{{ detailsData.title }}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class="app-content">
+		<view class="bar-tab bar-tab-fixed flexbox middle" wx:if="{{barFixed}}">
+			<view wx:for="{{tabList}}" wx:key="index" class="tab-item {{selectedIndex == index ? 'active' : ''}} flexbox middle center" bindtap="scrollToTarget" data-index="{{index}}">
+				<view class="tab-text">{{item.text}}</view>
+				<text class="tab-line"></text>
+			</view>
+		</view>
+		<view id="tabStatic" class="bar-tab bar-tab-static flexbox middle">
+			<view wx:for="{{tabList}}" wx:key="index" class="tab-item {{selectedIndex == index ? 'active' : ''}} flexbox middle center" bindtap="scrollToTarget" data-index="{{index}}">
+				<view class="tab-text">{{item.text}}</view>
+				<text class="tab-line"></text>
+			</view>
+		</view>
+		<view class="tab-content">
+			<view id="item1" class="tabbody" style="margin-top: 60rpx;">
+				<image class="app-images" src="{{detailsData.service_image}}" mode="widthFix"></image>
+			</view>
+			<view id="item2" class="tabbody">
+				<image class="app-images" src="{{detailsData.details_image}}" mode="widthFix"></image>
+			</view>
+			<view id="item3" class="tabbody">
+				<image class="app-images" src="{{detailsData.problem_image}}" mode="widthFix"></image>
+				<view style="height: 50px;"></view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="purchase flexbox left middle">
+	<button open-type="contact" id="contact-btn" class="contact-btn">
+		<image src="../../images/home/icon-chat.png" lazy-load="true"></image>
+		<view class="contact-text">客服</view>
+	</button>
+	<van-button round type="info" color="#FF8666" custom-style="height:92rpx;width:572rpx;font-size:34rpx;font-weight:600;" bindtap="submit">立即购买</van-button>
+</view>
+
+<!-- 弹出层 用户协议 -->
+<view class="mask" wx:if="{{ agreementShow }}"></view>
+<view class="popup-wrapper" wx:if="{{ agreementShow }}" catchtouchmove="return">
+	<view class="flexbox middle center" style="height: {{maskH}}px;">
+		<view class="popup-container">
+			<view class="title flexbox center middle">使用说明</view>
+			<view class="text">[慎重阅读]在使用家舒安各项产品和服务前，请您务必仔细阅读并透彻理解本政策，特别是以粗体标识的条款，您应重点阅读，在确认充分理解并同意后再开始使用。</view>
+			<view class="text mt28 mb60">点击查看<text style="color: #ff8666" catchtap="toPageHandle">《家舒安用户协议》</text></view>
+			<view class="pupop-btns flexbox justify">
+				<view class="btn" catchtap="popupCancel">不同意</view>
+				<view class="btn" catchtap="toCheckoutPage">同意并继续下单</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<van-popup show="{{ selectShow }}" bind:close="closeSelect" closeable round position="bottom" close-on-click-overlay="false" custom-style="height: 70%">
+	<view class="product-box" catchtouchmove="return">
+		<view class="product-info flexbox">
+			<view class="product-img"><image src="{{detailsData.logo}}"></image></view>
+			<view class="flex1">
+				<view class="price"><text>¥</text>{{price}}</view>
+				<view class="price-text">{{price_text}}</view>
+			</view>
+		</view>
+		<view class="product-items">
+			<view class="subtitle">请选择套餐</view>
+			<view class="items-list flexbox wrap">
+				<view class="item {{current == index ? 'on' : ''}}" wx:for="{{detailsData.service_number_list}}" wx:key="index" catchtap="selectHandle" data-index="{{index}}">{{item.title}}</view>
+			</view>
+		</view>
+		<view class="wx-fixed">
+			<view class="btns-box flexbox center middle" catchtap="selectSubmit">
+				<view class="btn-primary flexbox center middle">立即购买</view>
+			</view>
+		</view>
+	</view>
+</van-popup>
+<van-notify id="van-notify" />
+<van-dialog id="van-dialog" confirm-button-color="#FF8666" />

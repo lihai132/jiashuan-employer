@@ -1,0 +1,55 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class="wx-container">
+    <view class="join-bg">
+        <image class="wx-img" src="{{joinImg}}" mode="widthFix"></image>
+    </view>
+    <view class="join-content">
+        <view class="join-container">
+            <view class="company-wrap white-bg">
+                <view class="join-wrap-name">
+                    <image class="wx-img" src="../../images/mine/join-jiashuan.png" mode="widthFix"></image>
+                </view>
+            </view>
+            <view class="join-warp white-bg">
+                <view class="join-wrap-content">
+                    <view class="join-position"><text>{{position}}</text></view>
+                    <view class="join-title"><text>工作内容</text></view>
+                    <template is="wxParse" data="{{wxParseData:job_content.nodes}}" />
+                    <view class="join-title"><text>岗位要求</text></view>
+                    <template is="wxParse" data="{{wxParseData:job_require.nodes}}" />
+                    <view class="join-title"><text>公司福利</text></view>
+                    <template is="wxParse" data="{{wxParseData:welfare.nodes}}" />
+                </view>
+            </view>
+            <view class="line-wrap">
+                <image class="wx-line-img" src="../../images/mine/line-bg.png"></image>
+            </view>
+            <view class="contact-wrap white-bg">
+                <view class="contact-title">留下你的联系方式我们会尽快联系你</view>
+                <view class="contact-form">
+                    <view class="contact-form-item flexbox left middle">
+                        <view class="form-item-label">
+                            <image class="wx-img" src="../../images/mine/icon-user.png" mode="widthFix"></image>
+                        </view>
+                        <view class="form-item-input flex1">
+                            <input type="text" value="{{name}}" placeholder="请填写您的姓名" maxlength="20" bindblur="bindblur" data-type="name" />
+                        </view>
+                    </view>
+                    <view class="contact-form-item flexbox left middle">
+                        <view class="form-item-label">
+                            <image class="wx-img" src="../../images/mine/icon-phone.png" mode="widthFix"></image>
+                        </view>
+                        <view class="form-item-input flex1">
+                            <input type="number" value="{{phone}}" placeholder="请填写您的手机号" maxlength="11" bindblur="bindblur" data-type="phone" />
+                        </view>
+                    </view>
+                </view>
+                <view class="contact-btn">
+                    <button class="btn btn-primary btn-round" bindtap="submit">提交</button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <van-notify id="van-notify" />
+</view>

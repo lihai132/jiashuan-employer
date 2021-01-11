@@ -1,0 +1,41 @@
+<view class="app-body">
+    <view class="app-container">
+        <view class="record-list" wx:if="{{ abnormalList.length > 0 }}">
+            <view class="items" wx:for="{{ abnormalList }}" wx:key="index">
+                <view class="items-head flexbox justify middle">
+                    <view class="title">{{item.title}}</view>
+                    <view class="status">异常订单</view>
+                </view>
+                <view class="items-timer">{{item.sub}}</view>
+                <view class="items-info">
+                    <view class="item flexbox justify">
+                        <view class="label">服务开始时间</view>
+                        <view class="date">{{item.start_time}}</view>
+                    </view>
+                    <view class="item flexbox justify">
+                        <view class="label">服务完成时间</view>
+                        <view class="date">{{item.end_time}}</view>
+                    </view>
+                    <view class="item flexbox justify">
+                        <view class="label">服务总共时长</view>
+                        <view class="date">{{item.duration}}</view>
+                    </view>
+                </view>
+                <view class="phone-msg flexbox middle justify">
+                    <view class="flexbox">
+                        <text>家政师</text>
+                        <text>{{item.nanny_name}}</text>
+                    </view>
+                    <image class="icon-phone" src="../../images/order/icon-phone.png" bindtap="telHandle" data-phone="{{item.nanny_phone}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="no-data" wx:else>
+            <view class="no-pic flexbox center">
+                <image src="../../images/order/no-order.png"></image>
+            </view>
+            <view class="no-text flexbox center">没有异常订单记录!</view>
+        </view>
+    </view>
+</view>
+<van-notify id="van-notify" />

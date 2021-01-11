@@ -1,0 +1,41 @@
+.wx-logo {
+    margin-top: 184rpx;
+}
+.wx-logo image {
+    width: 160rpx;
+    height: 160rpx;
+}
+.wx-title {
+    margin-top: 28rpx;
+}
+.wx-title .wx-strong {
+    color: #1A1A1A;
+    font-size: 44rpx;
+    font-weight: bold;
+}
+.wx-title .wx-sub {
+    color: #999;
+    font-size: 32rpx;
+    letter-spacing: 15rpx;
+    margin-top: 4rpx;
+}
+.wx-authorize {
+    margin-top: 24rpx;
+}
+.wx-authorize button {
+    width: 630rpx !important;
+    border-radius: 50rpx !important;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 10rpx;
+    background: linear-gradient(270deg, #FFBB9F 0%, #FF8666 100%);
+}
+.wx-text {
+    width: 100%;
+    margin-top: 200rpx;
+    color: #666666;
+    font-size: 28rpx;
+}
+.wx-txt {
+    color: #FF8666;
+}

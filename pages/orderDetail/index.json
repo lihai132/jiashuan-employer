@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "订单详情",
-  "usingComponents": {
-    "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-notify": "@vant/weapp/notify/index",
-    "van-icon": "@vant/weapp/icon/index"
-  }
-}

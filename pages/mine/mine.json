@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "我的",
-  "usingComponents": {
-    "van-toast": "@vant/weapp/toast/index",
-    "van-popup": "@vant/weapp/popup/index"
-  }
-}
